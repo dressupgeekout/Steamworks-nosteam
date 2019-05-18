@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Steamworks.NET")]
+[assembly: AssemblyTitle("Steamworks.NET-nosteam")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Riley Labrecque")]
+[assembly: AssemblyCompany("Thomas Frohwein")]
 [assembly: AssemblyProduct("Steamworks.NET")]
-[assembly: AssemblyCopyright("Copyright © Riley Labrecque 2013-2019")]
+[assembly: AssemblyCopyright("Copyright © Thomas Frohwein 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

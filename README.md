@@ -21,6 +21,7 @@ xbuild Standalone/Steamworks.NET.sln
 
 This will build `Steamworks.NET.dll` in `Standalone/bin/x64/OSX-Linux/`.
 
+GitHub repo: https://github.com/rfht/Steamworks.NET-nosteam
 
 # Original README.md below (from upstream https://github.com/rlabrecque/Steamworks.NET)
 
