@@ -1,3 +1,29 @@
+Steamworks.NET-nosteam
+=======
+
+Drop-in replacement for Steamworks.NET.dll to run without Steam client present,
+e.g. if running on an operating system that doesn't feature a Steam client.
+
+Why?
+----
+
+A number of games are made largely platform-independent, but use Steamworks.NET
+and error out if no Steam client is present. This project builds a .dll that
+can be dropped in and is intended to keep the parent program running even in
+the absence of a Steam client.
+
+How to Build
+-----
+
+```
+xbuild Standalone/Steamworks.NET.sln
+```
+
+This will build `Steamworks.NET.dll` in `Standalone/bin/x64/OSX-Linux/`.
+
+
+# Original README.md below
+
 Steamworks.NET
 =======
 
