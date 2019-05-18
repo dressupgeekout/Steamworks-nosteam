@@ -46,7 +46,7 @@ namespace Steamworks {
 				//ret = CSteamAPIContext.Init();
 			//}
 
-			return 0; //return ret;
+			return false; //return ret;
 		}
 
 		public static void Shutdown() {
@@ -169,7 +169,7 @@ namespace Steamworks {
 				//ret = CSteamGameServerAPIContext.Init();
 			//}
 
-			return 0; //return ret;
+			return false; //return ret;
 		}
 
 		public static void Shutdown() {
@@ -195,17 +195,17 @@ namespace Steamworks {
 
 		public static bool BSecure() {
 			//InteropHelp.TestIfPlatformSupported();
-			//return NativeMethods.SteamGameServer_BSecure();
+			return true; //return NativeMethods.SteamGameServer_BSecure();
 		}
 
 		public static CSteamID GetSteamID() {
 			//InteropHelp.TestIfPlatformSupported();
-			//return (CSteamID)NativeMethods.SteamGameServer_GetSteamID();
+			return (CSteamID)NativeMethods.SteamGameServer_GetSteamID();
 		}
 
 		public static HSteamPipe GetHSteamPipe() {
 			//InteropHelp.TestIfPlatformSupported();
-			//return (HSteamPipe)NativeMethods.SteamGameServer_GetHSteamPipe();
+			return (HSteamPipe)NativeMethods.SteamGameServer_GetHSteamPipe();
 		}
 
 		public static HSteamUser GetHSteamUser() {

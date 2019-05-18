@@ -308,12 +308,12 @@ namespace Steamworks {
 			IntPtr pvParam) {
 			//m_hAPICall = SteamAPICall_t.Invalid; // Caller unregisters for us
 
-			try {
-				m_Func((T)Marshal.PtrToStructure(pvParam, typeof(T)), false);
-			}
-			catch (Exception e) {
+			//try {
+				//m_Func((T)Marshal.PtrToStructure(pvParam, typeof(T)), false);
+			//}
+			//catch (Exception e) {
 				//CallbackDispatcher.ExceptionHandler(e);
-			}
+			//}
 		}
 
 		private void OnRunCallResult(
@@ -325,12 +325,12 @@ namespace Steamworks {
 			if (hSteamAPICall == m_hAPICall) {
 				m_hAPICall = SteamAPICall_t.Invalid; // Caller unregisters for us
 
-				try {
-					m_Func((T)Marshal.PtrToStructure(pvParam, typeof(T)), bFailed);
-				}
-				catch (Exception e) {
+				//try {
+					//m_Func((T)Marshal.PtrToStructure(pvParam, typeof(T)), bFailed);
+				//}
+				//catch (Exception e) {
 					//CallbackDispatcher.ExceptionHandler(e);
-				}
+				//}
 			}
 		}
 
