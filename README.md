@@ -12,6 +12,13 @@ and error out if no Steam client is present. This project builds a .dll that
 can be dropped in and is intended to keep the parent program running even in
 the absence of a Steam client.
 
+What's changed?
+----
+
+* function returns
+* NativeMethods calls
+* errors (`throw`)
+
 How to Build
 -----
 

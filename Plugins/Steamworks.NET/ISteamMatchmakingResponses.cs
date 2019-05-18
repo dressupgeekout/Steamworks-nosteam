@@ -47,7 +47,7 @@ namespace Steamworks {
 
 		public ISteamMatchmakingServerListResponse(ServerResponded onServerResponded, ServerFailedToRespond onServerFailedToRespond, RefreshComplete onRefreshComplete) {
 			if (onServerResponded == null || onServerFailedToRespond == null || onRefreshComplete == null) {
-				throw new ArgumentNullException();
+				//throw new ArgumentNullException();
 			}
 			m_ServerResponded = onServerResponded;
 			m_ServerFailedToRespond = onServerFailedToRespond;
@@ -153,7 +153,7 @@ namespace Steamworks {
 
 		public ISteamMatchmakingPingResponse(ServerResponded onServerResponded, ServerFailedToRespond onServerFailedToRespond) {
 			if (onServerResponded == null || onServerFailedToRespond == null) {
-				throw new ArgumentNullException();
+				//throw new ArgumentNullException();
 			}
 			m_ServerResponded = onServerResponded;
 			m_ServerFailedToRespond = onServerFailedToRespond;
@@ -250,7 +250,7 @@ namespace Steamworks {
 
 		public ISteamMatchmakingPlayersResponse(AddPlayerToList onAddPlayerToList, PlayersFailedToRespond onPlayersFailedToRespond, PlayersRefreshComplete onPlayersRefreshComplete) {
 			if (onAddPlayerToList == null || onPlayersFailedToRespond == null || onPlayersRefreshComplete == null) {
-				throw new ArgumentNullException();
+				//throw new ArgumentNullException();
 			}
 			m_AddPlayerToList = onAddPlayerToList;
 			m_PlayersFailedToRespond = onPlayersFailedToRespond;
@@ -363,7 +363,7 @@ namespace Steamworks {
 
 		public ISteamMatchmakingRulesResponse(RulesResponded onRulesResponded, RulesFailedToRespond onRulesFailedToRespond, RulesRefreshComplete onRulesRefreshComplete) {
 			if (onRulesResponded == null || onRulesFailedToRespond == null || onRulesRefreshComplete == null) {
-				throw new ArgumentNullException();
+				//throw new ArgumentNullException();
 			}
 			m_RulesResponded = onRulesResponded;
 			m_RulesFailedToRespond = onRulesFailedToRespond;

@@ -20,7 +20,7 @@ namespace Steamworks {
 	public class InteropHelp {
 		public static void TestIfPlatformSupported() {
 #if !UNITY_EDITOR && !UNITY_STANDALONE && !STEAMWORKS_WIN && !STEAMWORKS_LIN_OSX
-			throw new System.InvalidOperationException("Steamworks functions can only be called on platforms that Steam is available on.");
+			//throw new System.InvalidOperationException("Steamworks functions can only be called on platforms that Steam is available on.");
 #endif
 		}
 
@@ -28,7 +28,7 @@ namespace Steamworks {
 			TestIfPlatformSupported();
 			if (CSteamAPIContext.GetSteamClient() == System.IntPtr.Zero) {
 				if (!CSteamAPIContext.Init()) {
-					throw new System.InvalidOperationException("Steamworks is not initialized.");
+					//throw new System.InvalidOperationException("Steamworks is not initialized.");
 				}
 			}
 		}
@@ -37,7 +37,7 @@ namespace Steamworks {
 			TestIfPlatformSupported();
 			if (CSteamGameServerAPIContext.GetSteamClient() == System.IntPtr.Zero) {
 				if (!CSteamGameServerAPIContext.Init()) {
-					throw new System.InvalidOperationException("Steamworks GameServer is not initialized.");
+					//throw new System.InvalidOperationException("Steamworks GameServer is not initialized.");
 				}
 			}
 		}
@@ -233,11 +233,11 @@ namespace Steamworks {
 			if (System.IO.File.Exists(file)) {
 				System.IO.FileInfo fInfo = new System.IO.FileInfo(file);
 				if (fInfo.Length != fileBytes) {
-					return false;
+					return true; //return false;
 				}
 
 				if (System.Diagnostics.FileVersionInfo.GetVersionInfo(file).FileVersion != Version.SteamAPIDLLVersion) {
-					return false;
+					return true; //return false;
 				}
 			}
 			return true;

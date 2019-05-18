@@ -143,12 +143,12 @@ namespace Steamworks {
 			m_Func = func;
 
 			// k_ECallbackFlagsRegistered is set by SteamAPI_RegisterCallback.
-			NativeMethods.SteamAPI_RegisterCallback(m_pCCallbackBase.AddrOfPinnedObject(), CallbackIdentities.GetCallbackIdentity(typeof(T)));
+			//NativeMethods.SteamAPI_RegisterCallback(m_pCCallbackBase.AddrOfPinnedObject(), CallbackIdentities.GetCallbackIdentity(typeof(T)));
 		}
 
 		public void Unregister() {
 			// k_ECallbackFlagsRegistered is removed by SteamAPI_UnregisterCallback.
-			NativeMethods.SteamAPI_UnregisterCallback(m_pCCallbackBase.AddrOfPinnedObject());
+			//NativeMethods.SteamAPI_UnregisterCallback(m_pCCallbackBase.AddrOfPinnedObject());
 		}
 
 		public void SetGameserverFlag() {
@@ -270,30 +270,30 @@ namespace Steamworks {
 				m_Func = func;
 			}
 
-			if (m_Func == null) {
-				throw new Exception("CallResult function was null, you must either set it in the CallResult Constructor or via Set()");
-			}
+			//if (m_Func == null) {
+				//throw new Exception("CallResult function was null, you must either set it in the CallResult Constructor or via Set()");
+			//}
 
-			if (m_hAPICall != SteamAPICall_t.Invalid) {
-				NativeMethods.SteamAPI_UnregisterCallResult(m_pCCallbackBase.AddrOfPinnedObject(), (ulong)m_hAPICall);
-			}
+			//if (m_hAPICall != SteamAPICall_t.Invalid) {
+				//NativeMethods.SteamAPI_UnregisterCallResult(m_pCCallbackBase.AddrOfPinnedObject(), (ulong)m_hAPICall);
+			//}
 
-			m_hAPICall = hAPICall;
+			//m_hAPICall = hAPICall;
 
-			if (hAPICall != SteamAPICall_t.Invalid) {
-				NativeMethods.SteamAPI_RegisterCallResult(m_pCCallbackBase.AddrOfPinnedObject(), (ulong)hAPICall);
-			}
+			//if (hAPICall != SteamAPICall_t.Invalid) {
+				//NativeMethods.SteamAPI_RegisterCallResult(m_pCCallbackBase.AddrOfPinnedObject(), (ulong)hAPICall);
+			//}
 		}
 
 		public bool IsActive() {
-			return (m_hAPICall != SteamAPICall_t.Invalid);
+			return true; //return (m_hAPICall != SteamAPICall_t.Invalid);
 		}
 
 		public void Cancel() {
-			if (m_hAPICall != SteamAPICall_t.Invalid) {
-				NativeMethods.SteamAPI_UnregisterCallResult(m_pCCallbackBase.AddrOfPinnedObject(), (ulong)m_hAPICall);
-				m_hAPICall = SteamAPICall_t.Invalid;
-			}
+			//if (m_hAPICall != SteamAPICall_t.Invalid) {
+				//NativeMethods.SteamAPI_UnregisterCallResult(m_pCCallbackBase.AddrOfPinnedObject(), (ulong)m_hAPICall);
+				//m_hAPICall = SteamAPICall_t.Invalid;
+			//}
 		}
 
 		public void SetGameserverFlag() {
@@ -306,13 +306,13 @@ namespace Steamworks {
 			IntPtr thisptr,
 #endif
 			IntPtr pvParam) {
-			m_hAPICall = SteamAPICall_t.Invalid; // Caller unregisters for us
+			//m_hAPICall = SteamAPICall_t.Invalid; // Caller unregisters for us
 
 			try {
 				m_Func((T)Marshal.PtrToStructure(pvParam, typeof(T)), false);
 			}
 			catch (Exception e) {
-				CallbackDispatcher.ExceptionHandler(e);
+				//CallbackDispatcher.ExceptionHandler(e);
 			}
 		}
 
@@ -329,7 +329,7 @@ namespace Steamworks {
 					m_Func((T)Marshal.PtrToStructure(pvParam, typeof(T)), bFailed);
 				}
 				catch (Exception e) {
-					CallbackDispatcher.ExceptionHandler(e);
+					//CallbackDispatcher.ExceptionHandler(e);
 				}
 			}
 		}
