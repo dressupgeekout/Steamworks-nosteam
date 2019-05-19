@@ -2,6 +2,8 @@
 
 ## Working
 
+X means tested and working, empty means not tested
+
 |Game|Launch|Initial Play|Long Play|Completion|Comments|
 |:---|:----:|:----------:|:-------:|:--------:|:------:|
 |Salt & Sanctuary|X|X||||
