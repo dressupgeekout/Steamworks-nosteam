@@ -40,8 +40,8 @@ namespace Steamworks {
 		/// <para> a CSteamID is a unique identifier for an account, and used to differentiate users in all parts of the Steamworks API</para>
 		/// </summary>
 		public static CSteamID GetSteamID() {
-			InteropHelp.TestIfAvailableClient();
-			return (CSteamID)NativeMethods.ISteamUser_GetSteamID(CSteamAPIContext.GetSteamUser());
+			//InteropHelp.TestIfAvailableClient();
+			return (CSteamID) 0; //return (CSteamID)NativeMethods.ISteamUser_GetSteamID(CSteamAPIContext.GetSteamUser());
 		}
 
 		/// <summary>

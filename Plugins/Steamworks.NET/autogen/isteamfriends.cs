@@ -24,8 +24,8 @@ namespace Steamworks {
 		/// <para> off; it will eventually be free'd or re-allocated</para>
 		/// </summary>
 		public static string GetPersonaName() {
-			InteropHelp.TestIfAvailableClient();
-			return InteropHelp.PtrToStringUTF8(NativeMethods.ISteamFriends_GetPersonaName(CSteamAPIContext.GetSteamFriends()));
+			//InteropHelp.TestIfAvailableClient();
+			return ""; //return InteropHelp.PtrToStringUTF8(NativeMethods.ISteamFriends_GetPersonaName(CSteamAPIContext.GetSteamFriends()));
 		}
 
 		/// <summary>
@@ -418,11 +418,12 @@ namespace Steamworks {
 		/// <para> and GetFriendRichPresenceKeyByIndex() (typically only used for debugging)</para>
 		/// </summary>
 		public static bool SetRichPresence(string pchKey, string pchValue) {
-			InteropHelp.TestIfAvailableClient();
-			using (var pchKey2 = new InteropHelp.UTF8StringHandle(pchKey))
-			using (var pchValue2 = new InteropHelp.UTF8StringHandle(pchValue)) {
-				return NativeMethods.ISteamFriends_SetRichPresence(CSteamAPIContext.GetSteamFriends(), pchKey2, pchValue2);
-			}
+			//InteropHelp.TestIfAvailableClient();
+			//using (var pchKey2 = new InteropHelp.UTF8StringHandle(pchKey))
+			//using (var pchValue2 = new InteropHelp.UTF8StringHandle(pchValue)) {
+				//return NativeMethods.ISteamFriends_SetRichPresence(CSteamAPIContext.GetSteamFriends(), pchKey2, pchValue2);
+			//}
+			return false;
 		}
 
 		public static void ClearRichPresence() {

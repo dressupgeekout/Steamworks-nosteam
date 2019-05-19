@@ -46,7 +46,7 @@ namespace Steamworks {
 				//ret = CSteamAPIContext.Init();
 			//}
 
-			return false; //return ret;
+			return true; //return ret;
 		}
 
 		public static void Shutdown() {

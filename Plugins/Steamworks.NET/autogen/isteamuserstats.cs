@@ -20,8 +20,8 @@ namespace Steamworks {
 		/// <para> Ask the server to send down this user's data and achievements for this game</para>
 		/// </summary>
 		public static bool RequestCurrentStats() {
-			InteropHelp.TestIfAvailableClient();
-			return NativeMethods.ISteamUserStats_RequestCurrentStats(CSteamAPIContext.GetSteamUserStats());
+			//InteropHelp.TestIfAvailableClient();
+			return false; //return NativeMethods.ISteamUserStats_RequestCurrentStats(CSteamAPIContext.GetSteamUserStats());
 		}
 
 		/// <summary>

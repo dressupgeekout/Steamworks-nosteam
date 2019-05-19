@@ -6,6 +6,8 @@ X means tested and working, empty means not tested
 
 |Game|Launch|Initial Play|Long Play|Completion|Comments|
 |:---|:----:|:----------:|:-------:|:--------:|:------:|
-|Salt & Sanctuary|X|X||||
+|Salt & Sanctuary	|X|X||||
+|Bleed 2		|X|X||||
+|Charlie Murder		|X|X||||
 
 ## Not Working
