@@ -12,5 +12,6 @@ X means tested and working, empty means not tested
 |CometStriker		|X|X||||
 |Solaroids: Prologue	|X|||||
 |Hidden In Plain Sight	|X|||||
+|Hyphen			|X|X||||
 
 ## Not Working
