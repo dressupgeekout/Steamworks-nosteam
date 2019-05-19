@@ -31,8 +31,8 @@ namespace Steamworks {
 		/// <para> The Steam client will automatically be trying to recreate the connection as often as possible.</para>
 		/// </summary>
 		public static bool BLoggedOn() {
-			InteropHelp.TestIfAvailableClient();
-			return NativeMethods.ISteamUser_BLoggedOn(CSteamAPIContext.GetSteamUser());
+			//InteropHelp.TestIfAvailableClient();
+			return false; //return NativeMethods.ISteamUser_BLoggedOn(CSteamAPIContext.GetSteamUser());
 		}
 
 		/// <summary>

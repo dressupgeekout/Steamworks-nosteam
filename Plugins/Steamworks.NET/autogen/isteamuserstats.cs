@@ -240,10 +240,11 @@ namespace Steamworks {
 		/// <para> This call is asynchronous, with the result returned in LeaderboardFindResult_t</para>
 		/// </summary>
 		public static SteamAPICall_t FindLeaderboard(string pchLeaderboardName) {
-			InteropHelp.TestIfAvailableClient();
-			using (var pchLeaderboardName2 = new InteropHelp.UTF8StringHandle(pchLeaderboardName)) {
-				return (SteamAPICall_t)NativeMethods.ISteamUserStats_FindLeaderboard(CSteamAPIContext.GetSteamUserStats(), pchLeaderboardName2);
-			}
+			//InteropHelp.TestIfAvailableClient();
+			//using (var pchLeaderboardName2 = new InteropHelp.UTF8StringHandle(pchLeaderboardName)) {
+				//return (SteamAPICall_t)NativeMethods.ISteamUserStats_FindLeaderboard(CSteamAPIContext.GetSteamUserStats(), pchLeaderboardName2);
+			//}
+			return (SteamAPICall_t) 0;
 		}
 
 		/// <summary>
@@ -409,8 +410,8 @@ namespace Steamworks {
 		/// <para> to the overall totals. The limit is 60.</para>
 		/// </summary>
 		public static SteamAPICall_t RequestGlobalStats(int nHistoryDays) {
-			InteropHelp.TestIfAvailableClient();
-			return (SteamAPICall_t)NativeMethods.ISteamUserStats_RequestGlobalStats(CSteamAPIContext.GetSteamUserStats(), nHistoryDays);
+			//InteropHelp.TestIfAvailableClient();
+			return (SteamAPICall_t) 0; //return (SteamAPICall_t)NativeMethods.ISteamUserStats_RequestGlobalStats(CSteamAPIContext.GetSteamUserStats(), nHistoryDays);
 		}
 
 		/// <summary>

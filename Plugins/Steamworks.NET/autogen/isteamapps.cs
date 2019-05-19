@@ -17,8 +17,8 @@ using IntPtr = System.IntPtr;
 namespace Steamworks {
 	public static class SteamApps {
 		public static bool BIsSubscribed() {
-			InteropHelp.TestIfAvailableClient();
-			return NativeMethods.ISteamApps_BIsSubscribed(CSteamAPIContext.GetSteamApps());
+			//InteropHelp.TestIfAvailableClient();
+			return false; //return NativeMethods.ISteamApps_BIsSubscribed(CSteamAPIContext.GetSteamApps());
 		}
 
 		public static bool BIsLowViolence() {
@@ -37,8 +37,8 @@ namespace Steamworks {
 		}
 
 		public static string GetCurrentGameLanguage() {
-			InteropHelp.TestIfAvailableClient();
-			return InteropHelp.PtrToStringUTF8(NativeMethods.ISteamApps_GetCurrentGameLanguage(CSteamAPIContext.GetSteamApps()));
+			//InteropHelp.TestIfAvailableClient();
+			return "english"; //return InteropHelp.PtrToStringUTF8(NativeMethods.ISteamApps_GetCurrentGameLanguage(CSteamAPIContext.GetSteamApps()));
 		}
 
 		public static string GetAvailableGameLanguages() {
@@ -50,8 +50,8 @@ namespace Steamworks {
 		/// <para> only use this member if you need to check ownership of another game related to yours, a demo for example</para>
 		/// </summary>
 		public static bool BIsSubscribedApp(AppId_t appID) {
-			InteropHelp.TestIfAvailableClient();
-			return NativeMethods.ISteamApps_BIsSubscribedApp(CSteamAPIContext.GetSteamApps(), appID);
+			//InteropHelp.TestIfAvailableClient();
+			return false; //return NativeMethods.ISteamApps_BIsSubscribedApp(CSteamAPIContext.GetSteamApps(), appID);
 		}
 
 		/// <summary>

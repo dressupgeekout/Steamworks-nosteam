@@ -324,16 +324,16 @@ namespace Steamworks {
 		/// <para> gets the small (32x32) avatar of the current user, which is a handle to be used in IClientUtils::GetImageRGBA(), or 0 if none set</para>
 		/// </summary>
 		public static int GetSmallFriendAvatar(CSteamID steamIDFriend) {
-			InteropHelp.TestIfAvailableClient();
-			return NativeMethods.ISteamFriends_GetSmallFriendAvatar(CSteamAPIContext.GetSteamFriends(), steamIDFriend);
+			//InteropHelp.TestIfAvailableClient();
+			return 0; //return NativeMethods.ISteamFriends_GetSmallFriendAvatar(CSteamAPIContext.GetSteamFriends(), steamIDFriend);
 		}
 
 		/// <summary>
 		/// <para> gets the medium (64x64) avatar of the current user, which is a handle to be used in IClientUtils::GetImageRGBA(), or 0 if none set</para>
 		/// </summary>
 		public static int GetMediumFriendAvatar(CSteamID steamIDFriend) {
-			InteropHelp.TestIfAvailableClient();
-			return NativeMethods.ISteamFriends_GetMediumFriendAvatar(CSteamAPIContext.GetSteamFriends(), steamIDFriend);
+			//InteropHelp.TestIfAvailableClient();
+			return 0; //return NativeMethods.ISteamFriends_GetMediumFriendAvatar(CSteamAPIContext.GetSteamFriends(), steamIDFriend);
 		}
 
 		/// <summary>
@@ -341,8 +341,8 @@ namespace Steamworks {
 		/// <para> returns -1 if this image has yet to be loaded, in this case wait for a AvatarImageLoaded_t callback and then call this again</para>
 		/// </summary>
 		public static int GetLargeFriendAvatar(CSteamID steamIDFriend) {
-			InteropHelp.TestIfAvailableClient();
-			return NativeMethods.ISteamFriends_GetLargeFriendAvatar(CSteamAPIContext.GetSteamFriends(), steamIDFriend);
+			//InteropHelp.TestIfAvailableClient();
+			return 0; //return NativeMethods.ISteamFriends_GetLargeFriendAvatar(CSteamAPIContext.GetSteamFriends(), steamIDFriend);
 		}
 
 		/// <summary>

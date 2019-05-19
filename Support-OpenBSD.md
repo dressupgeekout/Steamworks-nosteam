@@ -9,5 +9,8 @@ X means tested and working, empty means not tested
 |Salt & Sanctuary	|X|X||||
 |Bleed 2		|X|X||||
 |Charlie Murder		|X|X||||
+|CometStriker		|X|X||||
+|Solaroids: Prologue	|X|||||
+|Hidden In Plain Sight	|X|||||
 
 ## Not Working

@@ -27,8 +27,8 @@ namespace Steamworks {
 		}
 
 		public static AudioPlayback_Status GetPlaybackStatus() {
-			InteropHelp.TestIfAvailableClient();
-			return NativeMethods.ISteamMusic_GetPlaybackStatus(CSteamAPIContext.GetSteamMusic());
+			//InteropHelp.TestIfAvailableClient();
+			return (AudioPlayback_Status) 0; //return NativeMethods.ISteamMusic_GetPlaybackStatus(CSteamAPIContext.GetSteamMusic());
 		}
 
 		public static void Play() {
