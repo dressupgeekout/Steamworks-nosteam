@@ -185,18 +185,20 @@ namespace Steamworks {
 		/// <para> these stats won't be auto-updated; you'll need to call RequestUserStats() again to refresh any data</para>
 		/// </summary>
 		public static SteamAPICall_t RequestUserStats(CSteamID steamIDUser) {
-			InteropHelp.TestIfAvailableClient();
-			return (SteamAPICall_t)NativeMethods.ISteamUserStats_RequestUserStats(CSteamAPIContext.GetSteamUserStats(), steamIDUser);
+			//InteropHelp.TestIfAvailableClient();
+			return (SteamAPICall_t) 0; //return (SteamAPICall_t)NativeMethods.ISteamUserStats_RequestUserStats(CSteamAPIContext.GetSteamUserStats(), steamIDUser);
 		}
 
 		/// <summary>
 		/// <para> requests stat information for a user, usable after a successful call to RequestUserStats()</para>
 		/// </summary>
 		public static bool GetUserStat(CSteamID steamIDUser, string pchName, out int pData) {
-			InteropHelp.TestIfAvailableClient();
-			using (var pchName2 = new InteropHelp.UTF8StringHandle(pchName)) {
-				return NativeMethods.ISteamUserStats_GetUserStat(CSteamAPIContext.GetSteamUserStats(), steamIDUser, pchName2, out pData);
-			}
+			//InteropHelp.TestIfAvailableClient();
+			//using (var pchName2 = new InteropHelp.UTF8StringHandle(pchName)) {
+				//return NativeMethods.ISteamUserStats_GetUserStat(CSteamAPIContext.GetSteamUserStats(), steamIDUser, pchName2, out pData);
+			//}
+			pData = 0;
+			return false;
 		}
 
 		public static bool GetUserStat(CSteamID steamIDUser, string pchName, out float pData) {
