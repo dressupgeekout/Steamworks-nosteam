@@ -12,12 +12,12 @@ and error out if no Steam client is present. This project builds a .dll that
 can be dropped in and is intended to keep the parent program running even in
 the absence of a Steam client.
 
-What's changed?
+What's changed? (compared to original Steamworks.NET)
 ----
 
-* function returns
-* NativeMethods calls
-* errors (`throw`)
+Functions return neutral values (0, empty string, IntPtr.Zero, or the default
+of a struct). In a few places, a string for a language or country must be
+returned for the game to work. This is currently set to "english" and "US".
 
 How to Build
 -----
