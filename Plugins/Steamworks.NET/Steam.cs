@@ -45,6 +45,10 @@ namespace Steamworks {
 			return true; //return ret;
 		}
 
+		public static bool InitSafe() {
+			return false;
+		}
+
 		public static void Shutdown() {
 		}
 

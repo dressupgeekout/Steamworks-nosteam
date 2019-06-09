@@ -13,6 +13,9 @@ namespace Steamworks {
 		// If you have a custom ExceptionHandler in your engine you can register it here manually until we get something more elegant hooked up.
 		public static void ExceptionHandler(Exception e) {
 		}
+
+		public static void RunCallbacks() {
+		}
 	}
 
 	public sealed class Callback<T> : IDisposable {
@@ -42,6 +45,13 @@ namespace Steamworks {
 		/// </summary>
 		public static Callback<T> CreateGameServer(DispatchDelegate func) {
 			return new Callback<T>(func, bGameServer: true);
+		}
+
+		public Callback() {
+		}
+
+		public Callback(DispatchDelegate myFunc)
+			: this() {
 		}
 
 		public Callback(DispatchDelegate func, bool bGameServer = false) {
@@ -133,6 +143,9 @@ namespace Steamworks {
 		}
 
 		public void Set(SteamAPICall_t hAPICall, APIDispatchDelegate func = null) {
+		}
+
+		public void Set(SteamAPICall_t hAPICall) {
 		}
 
 		public bool IsActive() {
