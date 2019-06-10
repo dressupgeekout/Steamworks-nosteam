@@ -57,9 +57,7 @@ namespace Steamworks {
 		public CSteamID m_steamIDLobby;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: information about user sessions
-	//-----------------------------------------------------------------------------
 	public struct FriendSessionStateInfo_t {
 		public uint m_uiOnlineSessionInstances;
 		public byte m_uiPublishedToFriendsSessionInstance;
@@ -133,9 +131,7 @@ namespace Steamworks {
 		public ushort m_nRemotePort;			// Only exists for compatibility with older authentication api's
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Structure that contains an array of const char * strings and the number of those strings
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	public struct SteamParamStringArray_t {
 		public IntPtr m_ppStrings;
@@ -205,7 +201,6 @@ namespace Steamworks {
 	}
 
 	/// Store key/value pair used in matchmaking queries.
-	///
 	/// Actually, the name Key/Value is a bit misleading.  The "key" is better
 	/// understood as "filter operation code" and the "value" is the operand to this
 	/// filter operation.  The meaning of the operand depends upon the filter.
