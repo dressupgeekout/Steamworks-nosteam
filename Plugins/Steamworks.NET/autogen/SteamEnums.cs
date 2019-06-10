@@ -9,9 +9,7 @@ using IntPtr = System.IntPtr;
 using Flags = System.FlagsAttribute;
 
 namespace Steamworks {
-	//-----------------------------------------------------------------------------
 	// Purpose: possible results when registering an activation code
-	//-----------------------------------------------------------------------------
 	public enum ERegisterActivationCodeResult : int {
 		k_ERegisterActivationCodeResultOK = 0,
 		k_ERegisterActivationCodeResultFail = 1,
@@ -61,10 +59,6 @@ namespace Steamworks {
 		k_EControllerSourceMode_Switches
 	}
 
-	// Note: Please do not use action origins as a way to identify controller types. There is no
-	// guarantee that they will be added in a contiguous manner - use GetInputTypeForHandle instead
-	// Versions of Steam that add new controller types in the future will extend this enum if you're
-	// using a lookup table please check the bounds of any origins returned by Steam.
 	public enum EControllerActionOrigin : int {
 		// Steam Controller
 		k_EControllerActionOrigin_None,
@@ -330,9 +324,7 @@ namespace Steamworks {
 		k_ESteamControllerLEDFlag_RestoreUserDefault
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: set of relationships to other users
-	//-----------------------------------------------------------------------------
 	public enum EFriendRelationship : int {
 		k_EFriendRelationshipNone = 0,
 		k_EFriendRelationshipBlocked = 1,			// this doesn't get stored; the user has just done an Ignore on an friendship invite
@@ -343,13 +335,10 @@ namespace Steamworks {
 		k_EFriendRelationshipIgnoredFriend = 6,
 		k_EFriendRelationshipSuggested_DEPRECATED = 7,		// was used by the original implementation of the facebook linking feature, but now unused.
 
-		// keep this updated
 		k_EFriendRelationshipMax = 8,
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: list of states a friend can be in
-	//-----------------------------------------------------------------------------
 	public enum EPersonaState : int {
 		k_EPersonaStateOffline = 0,			// friend is not currently logged on
 		k_EPersonaStateOnline = 1,			// friend is logged on
@@ -362,9 +351,7 @@ namespace Steamworks {
 		k_EPersonaStateMax,
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: flags for enumerating friends list, or quickly checking a the relationship between users
-	//-----------------------------------------------------------------------------
 	[Flags]
 	public enum EFriendFlags : int {
 		k_EFriendFlagNone			= 0x00,
@@ -384,9 +371,7 @@ namespace Steamworks {
 		k_EFriendFlagAll			= 0xFFFF,
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: user restriction flags
-	//-----------------------------------------------------------------------------
 	public enum EUserRestriction : int {
 		k_nUserRestrictionNone		= 0,	// no known chat/content restriction
 		k_nUserRestrictionUnknown	= 1,	// we don't know yet (user offline)
@@ -405,9 +390,7 @@ namespace Steamworks {
 		k_EOverlayToStoreFlag_AddToCartAndShow = 2,
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Tells Steam where to place the browser window inside the overlay
-	//-----------------------------------------------------------------------------
 	public enum EActivateGameOverlayToWebPageMode : int {
 		k_EActivateGameOverlayToWebPageMode_Default = 0,		// Browser will open next to all other windows that the user has open in the overlay.
 																// The window will remain open, even if the user closes then re-opens the overlay.
@@ -548,10 +531,6 @@ namespace Steamworks {
 		k_EInputSourceMode_Switches
 	}
 
-	// Note: Please do not use action origins as a way to identify controller types. There is no
-	// guarantee that they will be added in a contiguous manner - use GetInputTypeForHandle instead.
-	// Versions of Steam that add new controller types in the future will extend this enum so if you're
-	// using a lookup table please check the bounds of any origins returned by Steam.
 	public enum EInputActionOrigin : int {
 		// Steam Controller
 		k_EInputActionOrigin_None,
@@ -933,9 +912,7 @@ namespace Steamworks {
 		k_ELobbyDistanceFilterWorldwide,	// no filtering, will match lobbies as far as India to NY (not recommended, expect multiple seconds of latency between the clients)
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Used in ChatInfo messages - fields specific to a chat member - must fit in a uint32
-	//-----------------------------------------------------------------------------
 	[Flags]
 	public enum EChatMemberStateChange : int {
 		// Specific to joining / leaving the chatroom
@@ -946,10 +923,8 @@ namespace Steamworks {
 		k_EChatMemberStateChangeBanned			= 0x0010,		// User kicked and banned
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Functions for quickly creating a Party with friends or acquaintances,
 	//			EG from chat rooms.
-	//-----------------------------------------------------------------------------
 	public enum ESteamPartyBeaconLocationType : int {
 		k_ESteamPartyBeaconLocationType_Invalid = 0,
 		k_ESteamPartyBeaconLocationType_ChatGroup = 1,
@@ -971,9 +946,7 @@ namespace Steamworks {
 		k_EStatePlayerDeclined = 2,
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose:
-	//-----------------------------------------------------------------------------
 	public enum AudioPlayback_Status : int {
 		AudioPlayback_Undefined = 0,
 		AudioPlayback_Playing = 1,
@@ -989,8 +962,6 @@ namespace Steamworks {
 		k_EP2PSessionErrorNoRightsToApp = 2,			// local user doesn't own the app that is running
 		k_EP2PSessionErrorDestinationNotLoggedIn = 3,	// target user isn't connected to Steam
 		k_EP2PSessionErrorTimeout = 4,					// target isn't responding, perhaps not calling AcceptP2PSessionWithUser()
-														// corporate firewalls can also block this (NAT traversal is not firewall traversal)
-														// make sure that UDP ports 3478, 4379, and 4380 are open in an outbound direction
 		k_EP2PSessionErrorMax = 5
 	}
 
@@ -1273,13 +1244,6 @@ namespace Steamworks {
 		k_EItemPreviewType_YouTubeVideo						= 1,	// video id is stored
 		k_EItemPreviewType_Sketchfab						= 2,	// model id is stored
 		k_EItemPreviewType_EnvironmentMap_HorizontalCross	= 3,	// standard image file expected - cube map in the layout
-																	// +---+---+-------+
-																	// |   |Up |       |
-																	// +---+---+---+---+
-																	// | L | F | R | B |
-																	// +---+---+---+---+
-																	// |   |Dn |       |
-																	// +---+---+---+---+
 		k_EItemPreviewType_EnvironmentMap_LatLong			= 4,	// standard image file expected
 		k_EItemPreviewType_ReservedMax						= 255,	// you can specify your own types above this value
 	}
@@ -1341,9 +1305,7 @@ namespace Steamworks {
 		k_EGamepadTextInputLineModeMultipleLines = 1
 	}
 
-	//-----------------------------------------------------------------------------
 	// results for CheckFileSignature
-	//-----------------------------------------------------------------------------
 	public enum ECheckFileSignature : int {
 		k_ECheckFileSignatureInvalidSignature = 0,
 		k_ECheckFileSignatureValidSignature = 1,
@@ -1566,9 +1528,6 @@ namespace Steamworks {
 		k_EAccountTypeMax
 	}
 
-	//-----------------------------------------------------------------------------
-	// Purpose:
-	//-----------------------------------------------------------------------------
 	public enum EAppReleaseState : int {
 		k_EAppReleaseState_Unknown			= 0,	// unknown, required appinfo or license info is missing
 		k_EAppReleaseState_Unavailable		= 1,	// even if user 'just' owns it, can see game at all
@@ -1577,9 +1536,6 @@ namespace Steamworks {
 		k_EAppReleaseState_Released			= 4,	// owners can download and play app.
 	}
 
-	//-----------------------------------------------------------------------------
-	// Purpose:
-	//-----------------------------------------------------------------------------
 	[Flags]
 	public enum EAppOwnershipFlags : int {
 		k_EAppOwnershipFlags_None				= 0x0000,	// unknown
@@ -1604,10 +1560,7 @@ namespace Steamworks {
 		k_EAppOwnershipFlags_SiteLicense		= 0x40000,	// Is from a site license
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: designed as flags to allow filters masks
-	// NOTE: If you add to this, please update PackageAppType (SteamConfig) as well as populatePackageAppType
-	//-----------------------------------------------------------------------------
 	[Flags]
 	public enum EAppType : int {
 		k_EAppType_Invalid				= 0x000,	// unknown / invalid
@@ -1632,10 +1585,7 @@ namespace Steamworks {
 		k_EAppType_DepotOnly			= -2147483647,	// placeholder since depots and apps share the same namespace
 	}
 
-	//-----------------------------------------------------------------------------
 	// types of user game stats fields
-	// WARNING: DO NOT RENUMBER EXISTING VALUES - STORED IN DATABASE
-	//-----------------------------------------------------------------------------
 	public enum ESteamUserStatType : int {
 		k_ESteamUserStatTypeINVALID = 0,
 		k_ESteamUserStatTypeINT = 1,
@@ -1649,9 +1599,7 @@ namespace Steamworks {
 		k_ESteamUserStatTypeMAX
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Chat Entry Types (previously was only friend-to-friend message types)
-	//-----------------------------------------------------------------------------
 	public enum EChatEntryType : int {
 		k_EChatEntryTypeInvalid = 0,
 		k_EChatEntryTypeChatMsg = 1,		// Normal text message from another user
@@ -1671,9 +1619,7 @@ namespace Steamworks {
 		k_EChatEntryTypeLinkBlocked = 14, // a link was removed by the chat filter.
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Chat Room Enter Responses
-	//-----------------------------------------------------------------------------
 	public enum EChatRoomEnterResponse : int {
 		k_EChatRoomEnterResponseSuccess = 1,		// Success
 		k_EChatRoomEnterResponseDoesntExist = 2,	// Chat doesn't exist (probably closed)
@@ -1705,9 +1651,7 @@ namespace Steamworks {
 		// Max of 8 flags
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Marketing message flags that change how a client should handle them
-	//-----------------------------------------------------------------------------
 	[Flags]
 	public enum EMarketingMessageFlags : int {
 		k_EMarketingMessageFlagsNone = 0,
@@ -1723,9 +1667,7 @@ namespace Steamworks {
 		k_EMarketingMessageFlagsPlatformLinux,
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Possible positions to tell the overlay to show notifications in
-	//-----------------------------------------------------------------------------
 	public enum ENotificationPosition : int {
 		k_EPositionTopLeft = 0,
 		k_EPositionTopRight = 1,
@@ -1733,9 +1675,7 @@ namespace Steamworks {
 		k_EPositionBottomRight = 3,
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Broadcast upload result details
-	//-----------------------------------------------------------------------------
 	public enum EBroadcastUploadResult : int {
 		k_EBroadcastUploadResultNone = 0,	// broadcast state unknown
 		k_EBroadcastUploadResultOK = 1,		// broadcast was good, no problems
@@ -1763,9 +1703,7 @@ namespace Steamworks {
 		k_EBroadcastUploadResultAudioInitFailed = 23,	// invalid audio settings
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: codes for well defined launch options
-	//-----------------------------------------------------------------------------
 	public enum ELaunchOptionType : int {
 		k_ELaunchOptionType_None		= 0,	// unknown what launch option does
 		k_ELaunchOptionType_Default		= 1,	// runs the game, app, whatever in default mode
@@ -1788,58 +1726,39 @@ namespace Steamworks {
 		k_ELaunchOptionType_Dialog 		= 1000, // show launch options dialog
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: code points for VR HMD vendors and models
-	// WARNING: DO NOT RENUMBER EXISTING VALUES - STORED IN A DATABASE
-	//-----------------------------------------------------------------------------
 	public enum EVRHMDType : int {
 		k_eEVRHMDType_None = -1, // unknown vendor and model
-
 		k_eEVRHMDType_Unknown = 0, // unknown vendor and model
-
 		k_eEVRHMDType_HTC_Dev = 1,	// original HTC dev kits
 		k_eEVRHMDType_HTC_VivePre = 2,	// htc vive pre
 		k_eEVRHMDType_HTC_Vive = 3,	// htc vive consumer release
 		k_eEVRHMDType_HTC_VivePro = 4,	// htc vive pro release
-
 		k_eEVRHMDType_HTC_Unknown = 20, // unknown htc hmd
-
 		k_eEVRHMDType_Oculus_DK1 = 21, // Oculus DK1
 		k_eEVRHMDType_Oculus_DK2 = 22, // Oculus DK2
 		k_eEVRHMDType_Oculus_Rift = 23, // Oculus rift
-
 		k_eEVRHMDType_Oculus_Unknown = 40, // // Oculus unknown HMD
-
 		k_eEVRHMDType_Acer_Unknown = 50, // Acer unknown HMD
 		k_eEVRHMDType_Acer_WindowsMR = 51, // Acer QHMD Windows MR headset
-
 		k_eEVRHMDType_Dell_Unknown = 60, // Dell unknown HMD
 		k_eEVRHMDType_Dell_Visor = 61, // Dell Visor Windows MR headset
-
 		k_eEVRHMDType_Lenovo_Unknown = 70, // Lenovo unknown HMD
 		k_eEVRHMDType_Lenovo_Explorer = 71, // Lenovo Explorer Windows MR headset
-
 		k_eEVRHMDType_HP_Unknown = 80, // HP unknown HMD
 		k_eEVRHMDType_HP_WindowsMR = 81, // HP Windows MR headset
-
 		k_eEVRHMDType_Samsung_Unknown = 90, // Samsung unknown HMD
 		k_eEVRHMDType_Samsung_Odyssey = 91, // Samsung Odyssey Windows MR headset
-
 		k_eEVRHMDType_Unannounced_Unknown = 100, // Unannounced unknown HMD
 		k_eEVRHMDType_Unannounced_WindowsMR = 101, // Unannounced Windows MR headset
-
 		k_eEVRHMDType_vridge = 110, // VRIDGE tool
-
 		k_eEVRHMDType_Huawei_Unknown = 120, // Huawei unknown HMD
 		k_eEVRHMDType_Huawei_VR2 = 121, // Huawei VR2 3DOF headset
 		k_eEVRHMDType_Huawei_EndOfRange = 129, // end of Huawei HMD range
-
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Reasons a user may not use the Community Market.
 	//          Used in MarketEligibilityResponse_t.
-	//-----------------------------------------------------------------------------
 	[Flags]
 	public enum EMarketNotAllowedReasonFlags : int {
 		k_EMarketNotAllowedReason_None = 0,
@@ -1916,7 +1835,6 @@ namespace Steamworks {
 	}
 
 	// HTTP related types
-	// This enum is used in client API methods, do not re-number existing values.
 	public enum EHTTPMethod : int {
 		k_EHTTPMethodInvalid = 0,
 		k_EHTTPMethodGET,
@@ -1926,10 +1844,6 @@ namespace Steamworks {
 		k_EHTTPMethodDELETE,
 		k_EHTTPMethodOPTIONS,
 		k_EHTTPMethodPATCH,
-
-		// The remaining HTTP methods are not yet supported, per rfc2616 section 5.1.1 only GET and HEAD are required for
-		// a compliant general purpose server.  We'll likely add more as we find uses for them.
-
 		// k_EHTTPMethodTRACE,
 		// k_EHTTPMethodCONNECT
 	}
