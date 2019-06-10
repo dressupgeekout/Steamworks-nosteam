@@ -7,10 +7,7 @@ using System.Runtime.InteropServices;
 using IntPtr = System.IntPtr;
 
 namespace Steamworks {
-	// callbacks
-	//---------------------------------------------------------------------------------
 	// Purpose: Sent when a new app is installed
-	//---------------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamAppListCallbacks + 1)]
 	public struct SteamAppInstalled_t {
@@ -18,9 +15,7 @@ namespace Steamworks {
 		public AppId_t m_nAppID;			// ID of the app that installs
 	}
 
-	//---------------------------------------------------------------------------------
 	// Purpose: Sent when an app is uninstalled
-	//---------------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamAppListCallbacks + 2)]
 	public struct SteamAppUninstalled_t {
@@ -28,10 +23,7 @@ namespace Steamworks {
 		public AppId_t m_nAppID;			// ID of the app that installs
 	}
 
-	// callbacks
-	//-----------------------------------------------------------------------------
 	// Purpose: posted after the user gains ownership of DLC & that DLC is installed
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamAppsCallbacks + 5)]
 	public struct DlcInstalled_t {
@@ -39,9 +31,7 @@ namespace Steamworks {
 		public AppId_t m_nAppID;		// AppID of the DLC
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: response to RegisterActivationCode()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamAppsCallbacks + 8)]
 	public struct RegisterActivationCodeResponse_t {
@@ -50,22 +40,18 @@ namespace Steamworks {
 		public uint m_unPackageRegistered;						// package that was registered. Only set on success
 	}
 
-	//---------------------------------------------------------------------------------
 	// Purpose: posted after the user gains executes a Steam URL with command line or query parameters
 	// such as steam://run/<appid>//-commandline/?param1=value1&param2=value2&param3=value3 etc
 	// while the game is already running.  The new params can be queried
 	// with GetLaunchQueryParam and GetLaunchCommandLine
-	//---------------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamAppsCallbacks + 14)]
 	public struct NewUrlLaunchParameters_t {
 		public const int k_iCallback = Constants.k_iSteamAppsCallbacks + 14;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: response to RequestAppProofOfPurchaseKey/RequestAllProofOfPurchaseKeys
 	// for supporting third-party CD keys, or other proof-of-purchase systems.
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamAppsCallbacks + 21)]
 	public struct AppProofOfPurchaseKeyResponse_t {
@@ -77,9 +63,7 @@ namespace Steamworks {
 		public string m_rgchKey;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: response to GetFileDetails
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamAppsCallbacks + 23)]
 	public struct FileDetailsResult_t {
@@ -91,10 +75,7 @@ namespace Steamworks {
 		public uint m_unFlags;		//
 	}
 
-	// callbacks
-	//-----------------------------------------------------------------------------
 	// Purpose: called when a friends' status changes
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 4)]
 	public struct PersonaStateChange_t {
@@ -104,10 +85,8 @@ namespace Steamworks {
 		public EPersonaChange m_nChangeFlags;		// what's changed
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: posted when game overlay activates or deactivates
 	//			the game can use this to be pause or resume single player games
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 31)]
 	public struct GameOverlayActivated_t {
@@ -115,10 +94,8 @@ namespace Steamworks {
 		public byte m_bActive;	// true if it's just been activated, false otherwise
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: called when the user tries to join a different game server from their friends list
 	//			game client should attempt to connect to specified server when this is received
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 32)]
 	public struct GameServerChangeRequested_t {
@@ -129,10 +106,8 @@ namespace Steamworks {
 		public string m_rgchPassword;	// server password, if any
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: called when the user tries to join a lobby from their friends list
 	//			game client should attempt to connect to specified lobby when this is received
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 33)]
 	public struct GameLobbyJoinRequested_t {
@@ -147,10 +122,8 @@ namespace Steamworks {
 		public CSteamID m_steamIDFriend;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: called when an avatar is loaded in from a previous GetLargeFriendAvatar() call
 	//			if the image wasn't already available
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 34)]
 	public struct AvatarImageLoaded_t {
@@ -161,9 +134,7 @@ namespace Steamworks {
 		public int m_iTall; // height of the loaded image
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: marks the return of a request officer list call
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 35)]
 	public struct ClanOfficerListResponse_t {
@@ -173,9 +144,7 @@ namespace Steamworks {
 		public byte m_bSuccess;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: callback indicating updated data about friends rich presence information
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 36)]
 	public struct FriendRichPresenceUpdate_t {
@@ -184,10 +153,8 @@ namespace Steamworks {
 		public AppId_t m_nAppID;			// the appID of the game (should always be the current game)
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: called when the user tries to join a game from their friends list
 	//			rich presence will have been set with the "connect" key which is set here
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 37)]
 	public struct GameRichPresenceJoinRequested_t {
@@ -197,9 +164,7 @@ namespace Steamworks {
 		public string m_rgchConnect;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: a chat message has been received for a clan chat the game has joined
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 38)]
 	public struct GameConnectedClanChatMsg_t {
@@ -209,9 +174,7 @@ namespace Steamworks {
 		public int m_iMessageID;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: a user has joined a clan chat
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 39)]
 	public struct GameConnectedChatJoin_t {
@@ -220,9 +183,7 @@ namespace Steamworks {
 		public CSteamID m_steamIDUser;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: a user has left the chat we're in
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 40)]
 	public struct GameConnectedChatLeave_t {
@@ -235,9 +196,7 @@ namespace Steamworks {
 		public bool m_bDropped;	// true if Steam connection dropped
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: a DownloadClanActivityCounts() call has finished
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 41)]
 	public struct DownloadClanActivityCountsResult_t {
@@ -246,9 +205,7 @@ namespace Steamworks {
 		public bool m_bSuccess;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: a JoinClanChatRoom() call has finished
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 42)]
 	public struct JoinClanChatRoomCompletionResult_t {
@@ -257,9 +214,7 @@ namespace Steamworks {
 		public EChatRoomEnterResponse m_eChatRoomEnterResponse;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: a chat message has been received from a user
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 43)]
 	public struct GameConnectedFriendChatMsg_t {
@@ -298,9 +253,7 @@ namespace Steamworks {
 		public int m_nTotalResultCount;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: reports the result of an attempt to change the user's persona name
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 47)]
 	public struct SetPersonaNameResponse_t {
@@ -313,16 +266,13 @@ namespace Steamworks {
 		public EResult m_result; // detailed result code
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Invoked when the status of unread messages changes
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 48)]
 	public struct UnreadChatMessagesChanged_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 48;
 	}
 
-	// callbacks
 	// callback notification - A new message is available for reading from the message queue
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamGameCoordinatorCallbacks + 1)]
@@ -338,10 +288,6 @@ namespace Steamworks {
 		public const int k_iCallback = Constants.k_iSteamGameCoordinatorCallbacks + 2;
 	}
 
-														// won't enforce authentication of users that connect to the server.
-														// Useful when you run a server where the clients may not
-														// be connected to the internet but you want them to play (i.e LANs)
-	// callbacks
 	// client has been approved to connect to this game server
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamGameServerCallbacks + 1)]
@@ -371,8 +317,6 @@ namespace Steamworks {
 		public EDenyReason m_eDenyReason;
 	}
 
-	// NOTE: callback values 4 and 5 are skipped because they are used for old deprecated callbacks,
-	// do not reuse them here.
 	// client achievement info
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamGameServerCallbacks + 6)]
@@ -427,13 +371,6 @@ namespace Steamworks {
 		public uint m_unReputationScore;	// The reputation score for the game server
 		[MarshalAs(UnmanagedType.I1)]
 		public bool m_bBanned;				// True if the server is banned from the Steam
-										// master servers
-		
-		// The following members are only filled out if m_bBanned is true. They will all
-		// be set to zero otherwise. Master server bans are by IP so it is possible to be
-		// banned even when the score is good high if there is a bad server on another port.
-		// This information can be used to determine which server is bad.
-		
 		public uint m_unBannedIP;		// The IP of the banned server
 		public ushort m_usBannedPort;		// The port of the banned server
 		public ulong m_ulBannedGameID;	// The game ID the banned server is serving
@@ -460,11 +397,8 @@ namespace Steamworks {
 		public CSteamID m_SteamIDCandidate;
 	}
 
-	// callbacks
-	//-----------------------------------------------------------------------------
 	// Purpose: called when the latests stats and achievements have been received
 	//			from the server
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamGameServerStatsCallbacks)]
 	public struct GSStatsReceived_t {
@@ -473,9 +407,7 @@ namespace Steamworks {
 		public CSteamID m_steamIDUser;	// The user for whom the stats are retrieved for
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: result of a request to store the user stats for a game
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamGameServerStatsCallbacks + 1)]
 	public struct GSStatsStored_t {
@@ -484,10 +416,8 @@ namespace Steamworks {
 		public CSteamID m_steamIDUser;	// The user for whom the stats were stored
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Callback indicating that a user's stats have been unloaded.
 	//  Call RequestUserStats again to access stats for this user
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 8)]
 	public struct GSStatsUnloaded_t {
@@ -495,10 +425,7 @@ namespace Steamworks {
 		public CSteamID m_steamIDUser;	// User whose stats have been unloaded
 	}
 
-	// callbacks
-	//-----------------------------------------------------------------------------
 	// Purpose: The browser is ready for use
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 1)]
 	public struct HTML_BrowserReady_t {
@@ -506,9 +433,7 @@ namespace Steamworks {
 		public HHTMLBrowser unBrowserHandle; // this browser is now fully created and ready to navigate to pages
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: the browser has a pending paint
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 2)]
 	public struct HTML_NeedsPaint_t {
@@ -527,10 +452,8 @@ namespace Steamworks {
 		public uint unPageSerial; // incremented on each new page load, you can use this to reject draws while navigating to new pages
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The browser wanted to navigate to a new page
 	//   NOTE - you MUST call AllowStartRequest in response to this callback
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 3)]
 	public struct HTML_StartRequest_t {
@@ -543,9 +466,7 @@ namespace Steamworks {
 		public bool bIsRedirect; // true if this was a http/html redirect from the last load request
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The browser has been requested to close due to user interaction (usually from a javascript window.close() call)
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 4)]
 	public struct HTML_CloseBrowser_t {
@@ -553,9 +474,7 @@ namespace Steamworks {
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: the browser is navigating to a new url
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 5)]
 	public struct HTML_URLChanged_t {
@@ -570,9 +489,7 @@ namespace Steamworks {
 		public bool bNewNavigation; // true if this was from a fresh tab and not a click on an existing page
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: A page is finished loading
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 6)]
 	public struct HTML_FinishedRequest_t {
@@ -582,9 +499,7 @@ namespace Steamworks {
 		public string pchPageTitle; //
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: a request to load this url in a new tab
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 7)]
 	public struct HTML_OpenLinkInNewTab_t {
@@ -593,9 +508,7 @@ namespace Steamworks {
 		public string pchURL; //
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: the page has a new title now
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 8)]
 	public struct HTML_ChangedTitle_t {
@@ -604,9 +517,7 @@ namespace Steamworks {
 		public string pchTitle; //
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: results from a search
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 9)]
 	public struct HTML_SearchResults_t {
@@ -616,9 +527,7 @@ namespace Steamworks {
 		public uint unCurrentMatch; //
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: page history status changed on the ability to go backwards and forward
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 10)]
 	public struct HTML_CanGoBackAndForward_t {
@@ -630,9 +539,7 @@ namespace Steamworks {
 		public bool bCanGoForward; //
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: details on the visibility and size of the horizontal scrollbar
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 11)]
 	public struct HTML_HorizontalScroll_t {
@@ -646,9 +553,7 @@ namespace Steamworks {
 		public uint unPageSize; //
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: details on the visibility and size of the vertical scrollbar
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 12)]
 	public struct HTML_VerticalScroll_t {
@@ -662,9 +567,7 @@ namespace Steamworks {
 		public uint unPageSize; //
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: response to GetLinkAtPosition call
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 13)]
 	public struct HTML_LinkAtPosition_t {
@@ -679,10 +582,8 @@ namespace Steamworks {
 		public bool bLiveLink; //
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: show a Javascript alert dialog, call JSDialogResponse
 	//   when the user dismisses this dialog (or right away to ignore it)
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 14)]
 	public struct HTML_JSAlert_t {
@@ -691,10 +592,8 @@ namespace Steamworks {
 		public string pchMessage; //
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: show a Javascript confirmation dialog, call JSDialogResponse
 	//   when the user dismisses this dialog (or right away to ignore it)
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 15)]
 	public struct HTML_JSConfirm_t {
@@ -703,10 +602,8 @@ namespace Steamworks {
 		public string pchMessage; //
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: when received show a file open dialog
 	//   then call FileLoadDialogResponse with the file(s) the user selected.
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 16)]
 	public struct HTML_FileOpenDialog_t {
@@ -716,15 +613,7 @@ namespace Steamworks {
 		public string pchInitialFile; //
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: a new html window is being created.
-	//
-	// IMPORTANT NOTE: at this time, the API does not allow you to acknowledge or
-	// render the contents of this new window, so the new window is always destroyed
-	// immediately. The URL and other parameters of the new window are passed here
-	// to give your application the opportunity to call CreateBrowser and set up
-	// a new browser in response to the attempted popup, if you wish to do so.
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 21)]
 	public struct HTML_NewWindow_t {
@@ -738,9 +627,7 @@ namespace Steamworks {
 		public HHTMLBrowser unNewWindow_BrowserHandle_IGNORE;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: change the cursor to display
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 22)]
 	public struct HTML_SetCursor_t {
@@ -749,9 +636,7 @@ namespace Steamworks {
 		public uint eMouseCursor; // the EMouseCursor to display
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: informational message from the browser
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 23)]
 	public struct HTML_StatusText_t {
@@ -760,9 +645,7 @@ namespace Steamworks {
 		public string pchMsg; // the EMouseCursor to display
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: show a tooltip
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 24)]
 	public struct HTML_ShowToolTip_t {
@@ -771,9 +654,7 @@ namespace Steamworks {
 		public string pchMsg; // the EMouseCursor to display
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: update the text of an existing tooltip
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 25)]
 	public struct HTML_UpdateToolTip_t {
@@ -782,9 +663,7 @@ namespace Steamworks {
 		public string pchMsg; // the EMouseCursor to display
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: hide the tooltip you are showing
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 26)]
 	public struct HTML_HideToolTip_t {
@@ -792,9 +671,7 @@ namespace Steamworks {
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The browser has restarted due to an internal failure, use this new handle value
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 27)]
 	public struct HTML_BrowserRestarted_t {
@@ -803,7 +680,6 @@ namespace Steamworks {
 		public HHTMLBrowser unOldBrowserHandle; // the handle for the browser before the restart, if your handle was this then switch to using unBrowserHandle for API calls
 	}
 
-	// callbacks
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientHTTPCallbacks + 1)]
 	public struct HTTPRequestCompleted_t {
@@ -832,12 +708,7 @@ namespace Steamworks {
 	[CallbackIdentity(Constants.k_iClientHTTPCallbacks + 2)]
 	public struct HTTPRequestHeadersReceived_t {
 		public const int k_iCallback = Constants.k_iClientHTTPCallbacks + 2;
-		
-		// Handle value for the request that has received headers.
 		public HTTPRequestHandle m_hRequest;
-		
-		// Context value that the user defined on the request that this callback is associated with, 0 if
-		// no context value was set.
 		public ulong m_ulContextValue;
 	}
 
@@ -845,19 +716,9 @@ namespace Steamworks {
 	[CallbackIdentity(Constants.k_iClientHTTPCallbacks + 3)]
 	public struct HTTPRequestDataReceived_t {
 		public const int k_iCallback = Constants.k_iClientHTTPCallbacks + 3;
-		
-		// Handle value for the request that has received data.
 		public HTTPRequestHandle m_hRequest;
-		
-		// Context value that the user defined on the request that this callback is associated with, 0 if
-		// no context value was set.
 		public ulong m_ulContextValue;
-		
-		
-		// Offset to provide to GetHTTPStreamingResponseBodyData to get this chunk of data
 		public uint m_cOffset;
-		
-		// Size to provide to GetHTTPStreamingResponseBodyData to get this chunk of data
 		public uint m_cBytesReceived;
 	}
 
@@ -874,11 +735,7 @@ namespace Steamworks {
 
 	// SteamInventoryFullUpdate_t callbacks are triggered when GetAllItems
 	// successfully returns a result which is newer / fresher than the last
-	// known result. (It will not trigger if the inventory hasn't changed,
-	// or if results from two overlapping calls are reversed in flight and
-	// the earlier result is already known to be stale/out-of-date.)
-	// The normal ResultReady callback will still be triggered immediately
-	// afterwards; this is an additional notification for your convenience.
+	// known result.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientInventoryCallbacks + 1)]
 	public struct SteamInventoryFullUpdate_t {
@@ -896,7 +753,6 @@ namespace Steamworks {
 		public const int k_iCallback = Constants.k_iClientInventoryCallbacks + 2;
 	}
 
-	// Returned
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientInventoryCallbacks + 3)]
 	public struct SteamInventoryEligiblePromoItemDefIDs_t {
@@ -905,7 +761,7 @@ namespace Steamworks {
 		public CSteamID m_steamID;
 		public int m_numEligiblePromoItemDefs;
 		[MarshalAs(UnmanagedType.I1)]
-		public bool m_bCachedData;	// indicates that the data was retrieved from the cache and not the server
+		public bool m_bCachedData;
 	}
 
 	// Triggered from StartPurchase call
@@ -928,11 +784,8 @@ namespace Steamworks {
 		public string m_rgchCurrency;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Callbacks for ISteamMatchmaking (which go through the regular Steam callback registration system)
-	//-----------------------------------------------------------------------------
 	// Purpose: a server was added/removed from the favorites list, you should refresh now
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 2)]
 	public struct FavoritesListChanged_t {
@@ -947,14 +800,7 @@ namespace Steamworks {
 		public AccountID_t m_unAccountId;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Someone has invited you to join a Lobby
-	//			normally you don't need to do anything with this, since
-	//			the Steam UI will also display a '<user> has invited you to the lobby, join?' dialog
-	//
-	//			if the user outside a game chooses to join, your game will be launched with the parameter "+connect_lobby <64-bit lobby id>",
-	//			or with the callback GameLobbyJoinRequested_t if they're already in-game
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 3)]
 	public struct LobbyInvite_t {
@@ -965,11 +811,7 @@ namespace Steamworks {
 		public ulong m_ulGameID;			// GameID of the Lobby
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Sent on entering a lobby, or on failing to enter
-	//			m_EChatRoomEnterResponse will be set to k_EChatRoomEnterResponseSuccess on success,
-	//			or a higher value on failure (see enum EChatRoomEnterResponse)
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 4)]
 	public struct LobbyEnter_t {
@@ -982,11 +824,7 @@ namespace Steamworks {
 		public uint m_EChatRoomEnterResponse;	// EChatRoomEnterResponse
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The lobby metadata has changed
-	//			if m_ulSteamIDMember is the steamID of a lobby member, use GetLobbyMemberData() to access per-user details
-	//			if m_ulSteamIDMember == m_ulSteamIDLobby, use GetLobbyData() to access lobby metadata
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 5)]
 	public struct LobbyDataUpdate_t {
@@ -998,10 +836,7 @@ namespace Steamworks {
 										// will only be false if RequestLobbyData() was called on a lobby that no longer exists
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The lobby chat room state has changed
-	//			this is usually sent when a user has joined or left the lobby
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 6)]
 	public struct LobbyChatUpdate_t {
@@ -1014,10 +849,7 @@ namespace Steamworks {
 		public uint m_rgfChatMemberStateChange;	// bitfield of EChatMemberStateChange values
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: A chat message for this lobby has been sent
-	//			use GetLobbyChatEntry( m_iChatID ) to retrieve the contents of this message
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 7)]
 	public struct LobbyChatMsg_t {
@@ -1029,12 +861,8 @@ namespace Steamworks {
 		public uint m_iChatID;				// index of the chat entry to lookup
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: A game created a game for all the members of the lobby to join,
 	//			as triggered by a SetLobbyGameServer()
-	//			it's up to the individual clients to take action on this; the usual
-	//			game behavior is to leave the lobby and connect to the specified game server
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 9)]
 	public struct LobbyGameCreated_t {
@@ -1046,10 +874,7 @@ namespace Steamworks {
 		public ushort m_usPort;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Number of matching lobbies found
-	//			iterate the returned lobbies with GetLobbyByIndex(), from values 0 to m_nLobbiesMatching-1
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 10)]
 	public struct LobbyMatchList_t {
@@ -1057,10 +882,7 @@ namespace Steamworks {
 		public uint m_nLobbiesMatching;		// Number of lobbies that matched search criteria and we have SteamIDs for
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: posted if a user is forcefully removed from a lobby
-	//			can occur if a user loses connection to Steam
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 12)]
 	public struct LobbyKicked_t {
@@ -1070,12 +892,10 @@ namespace Steamworks {
 		public byte m_bKickedDueToDisconnect;		// true if you were kicked from the lobby due to the user losing connection to Steam (currently always true)
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Result of our request to create a Lobby
 	//			m_eResult == k_EResultOK on success
 	//			at this point, the lobby has been joined and is ready for use
 	//			a LobbyEnter_t callback will also be received (since the local user is joining their own lobby)
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 13)]
 	public struct LobbyCreated_t {
@@ -1091,12 +911,10 @@ namespace Steamworks {
 		public ulong m_ulSteamIDLobby;		// chat room, zero if failed
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Result of our request to create a Lobby
 	//			m_eResult == k_EResultOK on success
 	//			at this point, the lobby has been joined and is ready for use
 	//			a LobbyEnter_t callback will also be received (since the local user is joining their own lobby)
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 16)]
 	public struct FavoritesListAccountsUpdated_t {
@@ -1105,7 +923,6 @@ namespace Steamworks {
 		public EResult m_eResult;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Callbacks for ISteamGameSearch (which go through the regular Steam callback registration system)
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamGameSearchCallbacks + 1)]
@@ -1141,7 +958,6 @@ namespace Steamworks {
 		public bool m_bFinalCallback;
 	}
 
-	//-----------------------------------------------------------------------------
 	// ISteamGameSearch : Game Host API callbacks
 	// callback from RequestPlayersForGame when the matchmaking service has started or ended search
 	// callback will also follow a call from CancelRequestPlayersForGame - m_bSearchInProgress will be false
@@ -1234,8 +1050,6 @@ namespace Steamworks {
 
 	// Someone has used the beacon to join your party - they are in-flight now
 	// and we've reserved one of the open slots for them.
-	// You should confirm when they join your party by calling OnReservationCompleted().
-	// Otherwise, Steam may timeout their reservation eventually.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamPartiesCallbacks + 3)]
 	public struct ReservationNotificationCallback_t {
@@ -1268,7 +1082,6 @@ namespace Steamworks {
 		public const int k_iCallback = Constants.k_iSteamPartiesCallbacks + 6;
 	}
 
-	// callbacks
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamMusicCallbacks + 1)]
 	public struct PlaybackStatusHasChanged_t {
@@ -1282,7 +1095,6 @@ namespace Steamworks {
 		public float m_flNewVolume;
 	}
 
-	// callbacks
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamMusicRemoteCallbacks + 1)]
 	public struct MusicPlayerRemoteWillActivate_t {
@@ -1375,7 +1187,6 @@ namespace Steamworks {
 		public int m_nPlayingRepeatStatus;
 	}
 
-	// callbacks
 	// callback notification - a user wants to talk to us over the P2P channel via the SendP2PPacket() API
 	// in response, a call to AcceptP2PPacketsFromUser() needs to be made, if you want to talk with them
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
@@ -1408,19 +1219,14 @@ namespace Steamworks {
 		public int m_eSNetSocketState;				// socket state, ESNetSocketState
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Callback for querying UGC
-	//-----------------------------------------------------------------------------
 	[CallbackIdentity(Constants.k_ISteamParentalSettingsCallbacks + 1)]
 	public struct SteamParentalSettingsChanged_t {
 		public const int k_iCallback = Constants.k_ISteamParentalSettingsCallbacks + 1;
 	}
 
-	// callbacks
-	//-----------------------------------------------------------------------------
 	// Purpose: sent when the local file cache is fully synced with the server for an app
 	//          That means that an application can be started and has all latest files
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 1)]
 	public struct RemoteStorageAppSyncedClient_t {
@@ -1430,10 +1236,8 @@ namespace Steamworks {
 		public int m_unNumDownloads;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: sent when the server is fully synced with the local file cache for an app
 	//          That means that we can shutdown Steam and our data is stored on the server
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 2)]
 	public struct RemoteStorageAppSyncedServer_t {
@@ -1443,10 +1247,7 @@ namespace Steamworks {
 		public int m_unNumUploads;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Status of up and downloads during a sync session
-	//
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 3)]
 	public struct RemoteStorageAppSyncProgress_t {
@@ -1460,13 +1261,9 @@ namespace Steamworks {
 		public bool m_bUploading;							// if false, downloading
 	}
 
-	//
 	// IMPORTANT! k_iClientRemoteStorageCallbacks + 4 is used, see iclientremotestorage.h
-	//
-	//-----------------------------------------------------------------------------
 	// Purpose: Sent after we've determined the list of files that are out of sync
 	//          with the server.
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 5)]
 	public struct RemoteStorageAppSyncStatusCheck_t {
@@ -1475,9 +1272,7 @@ namespace Steamworks {
 		public EResult m_eResult;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to FileShare()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 7)]
 	public struct RemoteStorageFileShareResult_t {
@@ -1489,9 +1284,7 @@ namespace Steamworks {
 	}
 
 	// k_iClientRemoteStorageCallbacks + 8 is deprecated! Do not reuse
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to PublishFile()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 9)]
 	public struct RemoteStoragePublishFileResult_t {
@@ -1502,9 +1295,7 @@ namespace Steamworks {
 		public bool m_bUserNeedsToAcceptWorkshopLegalAgreement;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to DeletePublishedFile()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 11)]
 	public struct RemoteStorageDeletePublishedFileResult_t {
@@ -1513,9 +1304,7 @@ namespace Steamworks {
 		public PublishedFileId_t m_nPublishedFileId;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to EnumerateUserPublishedFiles()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 12)]
 	public struct RemoteStorageEnumerateUserPublishedFilesResult_t {
@@ -1527,9 +1316,7 @@ namespace Steamworks {
 		public PublishedFileId_t[] m_rgPublishedFileId;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to SubscribePublishedFile()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 13)]
 	public struct RemoteStorageSubscribePublishedFileResult_t {
@@ -1538,9 +1325,7 @@ namespace Steamworks {
 		public PublishedFileId_t m_nPublishedFileId;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to EnumerateSubscribePublishedFiles()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 14)]
 	public struct RemoteStorageEnumerateUserSubscribedFilesResult_t {
@@ -1554,9 +1339,7 @@ namespace Steamworks {
 		public uint[] m_rgRTimeSubscribed;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to UnsubscribePublishedFile()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 15)]
 	public struct RemoteStorageUnsubscribePublishedFileResult_t {
@@ -1565,9 +1348,7 @@ namespace Steamworks {
 		public PublishedFileId_t m_nPublishedFileId;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to CommitPublishedFileUpdate()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 16)]
 	public struct RemoteStorageUpdatePublishedFileResult_t {
@@ -1578,9 +1359,7 @@ namespace Steamworks {
 		public bool m_bUserNeedsToAcceptWorkshopLegalAgreement;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to UGCDownload()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 17)]
 	public struct RemoteStorageDownloadUGCResult_t {
@@ -1594,9 +1373,7 @@ namespace Steamworks {
 		public ulong m_ulSteamIDOwner;		// Steam ID of the user who created this content.
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to GetPublishedFileDetails()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 18)]
 	public struct RemoteStorageGetPublishedFileDetailsResult_t {
@@ -1647,9 +1424,7 @@ namespace Steamworks {
 		public uint m_unStartIndex;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of GetPublishedItemVoteDetails
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 20)]
 	public struct RemoteStorageGetPublishedItemVoteDetailsResult_t {
@@ -1662,9 +1437,7 @@ namespace Steamworks {
 		public float m_fScore;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: User subscribed to a file for the app (from within the app or on the web)
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 21)]
 	public struct RemoteStoragePublishedFileSubscribed_t {
@@ -1673,9 +1446,7 @@ namespace Steamworks {
 		public AppId_t m_nAppID;						// ID of the app that will consume this file.
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: User unsubscribed from a file for the app (from within the app or on the web)
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 22)]
 	public struct RemoteStoragePublishedFileUnsubscribed_t {
@@ -1684,9 +1455,7 @@ namespace Steamworks {
 		public AppId_t m_nAppID;						// ID of the app that will consume this file.
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Published file that a user owns was deleted (from within the app or the web)
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 23)]
 	public struct RemoteStoragePublishedFileDeleted_t {
@@ -1695,9 +1464,7 @@ namespace Steamworks {
 		public AppId_t m_nAppID;						// ID of the app that will consume this file.
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to UpdateUserPublishedItemVote()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 24)]
 	public struct RemoteStorageUpdateUserPublishedItemVoteResult_t {
@@ -1706,9 +1473,7 @@ namespace Steamworks {
 		public PublishedFileId_t m_nPublishedFileId;	// The published file id
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to GetUserPublishedItemVoteDetails()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 25)]
 	public struct RemoteStorageUserVoteDetails_t {
@@ -1752,9 +1517,7 @@ namespace Steamworks {
 		public uint[] m_rgRTimeUpdated;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Called periodically while a PublishWorkshopFile is in progress
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 29)]
 	public struct RemoteStoragePublishFileProgress_t {
@@ -1764,9 +1527,7 @@ namespace Steamworks {
 		public bool m_bPreview;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Called when the content for a published file is updated
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 30)]
 	public struct RemoteStoragePublishedFileUpdated_t {
@@ -1776,9 +1537,7 @@ namespace Steamworks {
 		public ulong m_ulUnused;						// not used anymore
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Called when a FileWriteAsync completes
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 31)]
 	public struct RemoteStorageFileWriteAsyncComplete_t {
@@ -1786,9 +1545,7 @@ namespace Steamworks {
 		public EResult m_eResult;						// result
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Called when a FileReadAsync completes
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientRemoteStorageCallbacks + 32)]
 	public struct RemoteStorageFileReadAsyncComplete_t {
@@ -1799,11 +1556,8 @@ namespace Steamworks {
 		public uint m_cubRead;						// amount read - will the <= the amount requested
 	}
 
-	// callbacks
-	//-----------------------------------------------------------------------------
 	// Purpose: Screenshot successfully written or otherwise added to the library
 	// and can now be tagged
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamScreenshotsCallbacks + 1)]
 	public struct ScreenshotReady_t {
@@ -1812,20 +1566,16 @@ namespace Steamworks {
 		public EResult m_eResult;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Screenshot has been requested by the user.  Only sent if
 	// HookScreenshots() has been called, in which case Steam will not take
 	// the screenshot itself.
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamScreenshotsCallbacks + 2)]
 	public struct ScreenshotRequested_t {
 		public const int k_iCallback = Constants.k_iSteamScreenshotsCallbacks + 2;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Callback for querying UGC
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 1)]
 	public struct SteamUGCQueryCompleted_t {
@@ -1840,9 +1590,7 @@ namespace Steamworks {
 		public string m_rgchNextCursor; // If a paging cursor was used, then this will be the next cursor to get the next result set.
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Callback for requesting details on one piece of UGC
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 2)]
 	public struct SteamUGCRequestUGCDetailsResult_t {
@@ -1852,9 +1600,7 @@ namespace Steamworks {
 		public bool m_bCachedData; // indicates whether this data was retrieved from the local on-disk cache
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: result for ISteamUGC::CreateItem()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 3)]
 	public struct CreateItemResult_t {
@@ -1865,9 +1611,7 @@ namespace Steamworks {
 		public bool m_bUserNeedsToAcceptWorkshopLegalAgreement;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: result for ISteamUGC::SubmitItemUpdate()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 4)]
 	public struct SubmitItemUpdateResult_t {
@@ -1878,9 +1622,7 @@ namespace Steamworks {
 		public PublishedFileId_t m_nPublishedFileId;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: a Workshop item has been installed or updated
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 5)]
 	public struct ItemInstalled_t {
@@ -1889,9 +1631,7 @@ namespace Steamworks {
 		public PublishedFileId_t m_nPublishedFileId;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: result of DownloadItem(), existing item files can be accessed again
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 6)]
 	public struct DownloadItemResult_t {
@@ -1901,9 +1641,7 @@ namespace Steamworks {
 		public EResult m_eResult;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: result of AddItemToFavorites() or RemoveItemFromFavorites()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 7)]
 	public struct UserFavoriteItemsListChanged_t {
@@ -1914,9 +1652,7 @@ namespace Steamworks {
 		public bool m_bWasAddRequest;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to SetUserItemVote()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 8)]
 	public struct SetUserItemVoteResult_t {
@@ -1927,9 +1663,7 @@ namespace Steamworks {
 		public bool m_bVoteUp;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to GetUserItemVote()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 9)]
 	public struct GetUserItemVoteResult_t {
@@ -1944,9 +1678,7 @@ namespace Steamworks {
 		public bool m_bVoteSkipped;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to StartPlaytimeTracking()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 10)]
 	public struct StartPlaytimeTrackingResult_t {
@@ -1954,9 +1686,7 @@ namespace Steamworks {
 		public EResult m_eResult;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to StopPlaytimeTracking()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 11)]
 	public struct StopPlaytimeTrackingResult_t {
@@ -1964,9 +1694,7 @@ namespace Steamworks {
 		public EResult m_eResult;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to AddDependency
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 12)]
 	public struct AddUGCDependencyResult_t {
@@ -1976,9 +1704,7 @@ namespace Steamworks {
 		public PublishedFileId_t m_nChildPublishedFileId;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to RemoveDependency
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 13)]
 	public struct RemoveUGCDependencyResult_t {
@@ -1988,9 +1714,7 @@ namespace Steamworks {
 		public PublishedFileId_t m_nChildPublishedFileId;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to AddAppDependency
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 14)]
 	public struct AddAppDependencyResult_t {
@@ -2000,9 +1724,7 @@ namespace Steamworks {
 		public AppId_t m_nAppID;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to RemoveAppDependency
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 15)]
 	public struct RemoveAppDependencyResult_t {
@@ -2012,10 +1734,8 @@ namespace Steamworks {
 		public AppId_t m_nAppID;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to GetAppDependencies.  Callback may be called
 	//			multiple times until all app dependencies have been returned.
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 16)]
 	public struct GetAppDependenciesResult_t {
@@ -2028,9 +1748,7 @@ namespace Steamworks {
 		public uint m_nTotalNumAppDependencies;	// total found
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: The result of a call to DeleteItem
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iClientUGCCallbacks + 17)]
 	public struct DeleteItemResult_t {
@@ -2039,25 +1757,20 @@ namespace Steamworks {
 		public PublishedFileId_t m_nPublishedFileId;
 	}
 
-	// callbacks
-	//-----------------------------------------------------------------------------
 	// Purpose: called when a connections to the Steam back-end has been established
 	//			this means the Steam client now has a working connection to the Steam servers
 	//			usually this will have occurred before the game has launched, and should
 	//			only be seen if the user has dropped connection due to a networking issue
 	//			or a Steam server update
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 1)]
 	public struct SteamServersConnected_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 1;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: called when a connection attempt has failed
 	//			this will occur periodically if the Steam client is not connected,
 	//			and has failed in it's retry to establish a connection
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 2)]
 	public struct SteamServerConnectFailure_t {
@@ -2067,10 +1780,8 @@ namespace Steamworks {
 		public bool m_bStillRetrying;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: called if the client has lost connection to the Steam servers
 	//			real-time services will be disabled until a matching SteamServersConnected_t has been posted
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 3)]
 	public struct SteamServersDisconnected_t {
@@ -2078,12 +1789,10 @@ namespace Steamworks {
 		public EResult m_eResult;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Sent by the Steam server to the client telling it to disconnect from the specified game server,
 	//			which it may be in the process of or already connected to.
 	//			The game client should immediately disconnect upon receiving this message.
 	//			This can usually occur if the user doesn't have rights to play on the game server.
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 13)]
 	public struct ClientGameServerDeny_t {
@@ -2096,11 +1805,9 @@ namespace Steamworks {
 		public uint m_uReason;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: called when the callback system for this client is in an error state (and has flushed pending callbacks)
 	//			When getting this message the client should disconnect from Steam, reset any stored Steam state and reconnect.
 	//			This usually occurs in the rare event the Steam client has some kind of fatal error.
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 17)]
 	public struct IPCFailure_t {
@@ -2108,18 +1815,14 @@ namespace Steamworks {
 		public byte m_eFailureType;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Signaled whenever licenses change
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 25)]
 	public struct LicensesUpdated_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 25;
 	}
 
-	//-----------------------------------------------------------------------------
 	// callback for BeginAuthSession
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 43)]
 	public struct ValidateAuthTicketResponse_t {
@@ -2129,9 +1832,7 @@ namespace Steamworks {
 		public CSteamID m_OwnerSteamID; // different from m_SteamID if borrowed
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: called when a user has responded to a microtransaction authorization request
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 52)]
 	public struct MicroTxnAuthorizationResponse_t {
@@ -2142,9 +1843,7 @@ namespace Steamworks {
 		public byte m_bAuthorized;		// if user authorized transaction
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Result from RequestEncryptedAppTicket
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 54)]
 	public struct EncryptedAppTicketResponse_t {
@@ -2153,9 +1852,7 @@ namespace Steamworks {
 		public EResult m_eResult;
 	}
 
-	//-----------------------------------------------------------------------------
 	// callback for GetAuthSessionTicket
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 63)]
 	public struct GetAuthSessionTicketResponse_t {
@@ -2164,9 +1861,7 @@ namespace Steamworks {
 		public EResult m_eResult;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: sent to your game in response to a steam://gamewebcallback/ command
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 64)]
 	public struct GameWebCallback_t {
@@ -2175,9 +1870,7 @@ namespace Steamworks {
 		public string m_szURL;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: sent to your game in response to ISteamUser::RequestStoreAuthURL
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 65)]
 	public struct StoreAuthURLResponse_t {
@@ -2186,9 +1879,7 @@ namespace Steamworks {
 		public string m_szURL;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: sent in response to ISteamUser::GetMarketEligibility
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 66)]
 	public struct MarketEligibilityResponse_t {
@@ -2202,11 +1893,8 @@ namespace Steamworks {
 		public int m_cdayNewDeviceCooldown; // The number of days after initial device authorization a user must wait before using the market on that device
 	}
 
-	// callbacks
-	//-----------------------------------------------------------------------------
 	// Purpose: called when the latests stats and achievements have been received
 	//			from the server
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Explicit, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 1)]
 	public struct UserStatsReceived_t {
@@ -2219,9 +1907,7 @@ namespace Steamworks {
 		public CSteamID m_steamIDUser;	// The user for whom the stats are retrieved for
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: result of a request to store the user stats for a game
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 2)]
 	public struct UserStatsStored_t {
@@ -2230,11 +1916,9 @@ namespace Steamworks {
 		public EResult m_eResult;		// success / error
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: result of a request to store the achievements for a game, or an
 	//			"indicate progress" call. If both m_nCurProgress and m_nMaxProgress
 	//			are zero, that means the achievement has been fully unlocked.
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 3)]
 	public struct UserAchievementStored_t {
@@ -2249,10 +1933,8 @@ namespace Steamworks {
 		public uint m_nMaxProgress;			// "out of" this many
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: call result for finding a leaderboard, returned as a result of FindOrCreateLeaderboard() or FindLeaderboard()
 	//			use CCallResult<> to map this async result to a member function
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 4)]
 	public struct LeaderboardFindResult_t {
@@ -2261,10 +1943,8 @@ namespace Steamworks {
 		public byte m_bLeaderboardFound;				// 0 if no leaderboard found
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: call result indicating scores for a leaderboard have been downloaded and are ready to be retrieved, returned as a result of DownloadLeaderboardEntries()
 	//			use CCallResult<> to map this async result to a member function
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 5)]
 	public struct LeaderboardScoresDownloaded_t {
@@ -2274,10 +1954,8 @@ namespace Steamworks {
 		public int m_cEntryCount; // the number of entries downloaded
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: call result indicating scores has been uploaded, returned as a result of UploadLeaderboardScore()
 	//			use CCallResult<> to map this async result to a member function
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 6)]
 	public struct LeaderboardScoreUploaded_t {
@@ -2298,10 +1976,8 @@ namespace Steamworks {
 		public int m_cPlayers;			// Number of players currently playing
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Callback indicating that a user's stats have been unloaded.
 	//  Call RequestUserStats again to access stats for this user
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 8)]
 	public struct UserStatsUnloaded_t {
@@ -2309,9 +1985,7 @@ namespace Steamworks {
 		public CSteamID m_steamIDUser;	// User whose stats have been unloaded
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Callback indicating that an achievement icon has been fetched
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 9)]
 	public struct UserAchievementIconFetched_t {
@@ -2325,9 +1999,7 @@ namespace Steamworks {
 		public int m_nIconHandle;		// Handle to the image, which can be used in SteamUtils()->GetImageRGBA(), 0 means no image is set for the achievement
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Callback indicating that global achievement percentages are fetched
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 10)]
 	public struct GlobalAchievementPercentagesReady_t {
@@ -2337,9 +2009,7 @@ namespace Steamworks {
 		public EResult m_eResult;				// Result of the operation
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: call result indicating UGC has been uploaded, returned as a result of SetLeaderboardUGC()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 11)]
 	public struct LeaderboardUGCSet_t {
@@ -2348,10 +2018,8 @@ namespace Steamworks {
 		public SteamLeaderboard_t m_hSteamLeaderboard;	// the leaderboard handle that was
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: callback indicating global stats have been received.
 	//	Returned as a result of RequestGlobalStats()
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 12)]
 	public struct GlobalStatsReceived_t {
@@ -2360,19 +2028,14 @@ namespace Steamworks {
 		public EResult m_eResult;				// The result of the request
 	}
 
-	// callbacks
-	//-----------------------------------------------------------------------------
 	// Purpose: The country of the user changed
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 1)]
 	public struct IPCountry_t {
 		public const int k_iCallback = Constants.k_iSteamUtilsCallbacks + 1;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: Fired when running on a laptop and less than 10 minutes of battery is left, fires then every minute
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 2)]
 	public struct LowBatteryPower_t {
@@ -2380,9 +2043,7 @@ namespace Steamworks {
 		public byte m_nMinutesBatteryLeft;
 	}
 
-	//-----------------------------------------------------------------------------
 	// Purpose: called when a SteamAsyncCall_t has completed (or failed)
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 3)]
 	public struct SteamAPICallCompleted_t {
@@ -2392,18 +2053,14 @@ namespace Steamworks {
 		public uint m_cubParam;
 	}
 
-	//-----------------------------------------------------------------------------
 	// called when Steam wants to shutdown
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 4)]
 	public struct SteamShutdown_t {
 		public const int k_iCallback = Constants.k_iSteamUtilsCallbacks + 4;
 	}
 
-	//-----------------------------------------------------------------------------
 	// callback for CheckFileSignature
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 5)]
 	public struct CheckFileSignature_t {
@@ -2412,9 +2069,7 @@ namespace Steamworks {
 	}
 
 	// k_iSteamUtilsCallbacks + 13 is taken
-	//-----------------------------------------------------------------------------
 	// Big Picture gamepad text input has been closed
-	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 14)]
 	public struct GamepadTextInputDismissed_t {
