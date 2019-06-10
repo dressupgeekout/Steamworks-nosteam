@@ -9,9 +9,7 @@ using IntPtr = System.IntPtr;
 namespace Steamworks {
 	public static class Packsize {
 		public const int value = 4;
-		public static bool Test() {
-			return true;
-		}
+		public static bool Test() { return true; }
 
 		[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 		struct ValvePackingSentinel_t {

@@ -10,23 +10,13 @@ using System.Text;
 
 namespace Steamworks {
 	public class InteropHelp {
-		public static void TestIfPlatformSupported() {
-		}
+		public static void TestIfPlatformSupported() { }
+		public static void TestIfAvailableClient() { }
+		public static void TestIfAvailableGameServer() { }
 
-		public static void TestIfAvailableClient() {
-		}
-
-		public static void TestIfAvailableGameServer() {
-		}
-
-		// This continues to exist for both 'out string' and strings returned by Steamworks functions.
 		public static string PtrToStringUTF8(IntPtr nativeUtf8) {
-			if (nativeUtf8 == IntPtr.Zero) {
-				return null;
-			}
-
+			if (nativeUtf8 == IntPtr.Zero) { return null; }
 			int len = 0;
-
 			while (Marshal.ReadByte(nativeUtf8, len) != 0) {
 				++len;
 			}
@@ -40,8 +30,6 @@ namespace Steamworks {
 			return Encoding.UTF8.GetString(buffer);
 		}
 
-		// This is for 'const char *' arguments which we need to ensure do not get GC'd while Steam is using them.
-		// We can't use an ICustomMarshaler because Unity crashes when a string between 96 and 127 characters long is defined/initialized at the top of class scope...
 #if UNITY_EDITOR || UNITY_STANDALONE || STEAMWORKS_WIN || STEAMWORKS_LIN_OSX
 		public class UTF8StringHandle : Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid {
 			public UTF8StringHandle(string str)
@@ -51,7 +39,6 @@ namespace Steamworks {
 					return;
 				}
 
-				// +1 for '\0'
 				byte[] strbuf = new byte[Encoding.UTF8.GetByteCount(str) + 1];
 				Encoding.UTF8.GetBytes(str, 0, str.Length, strbuf, 0);
 				IntPtr buffer = Marshal.AllocHGlobal(strbuf.Length);
@@ -74,14 +61,9 @@ namespace Steamworks {
 		}
 #endif
 
-		// TODO - Should be IDisposable
-		// We can't use an ICustomMarshaler because Unity dies when MarshalManagedToNative() gets called with a generic type.
 		public class SteamParamStringArray {
-			// The pointer to each AllocHGlobal() string
 			IntPtr[] m_Strings;
-			// The pointer to the condensed version of m_Strings
 			IntPtr m_ptrStrings;
-			// The pointer to the StructureToPtr version of SteamParamStringArray_t that will get marshaled
 			IntPtr m_pSteamParamStringArray;
 
 			public SteamParamStringArray(System.Collections.Generic.IList<string> strings) {
@@ -129,8 +111,6 @@ namespace Steamworks {
 		}
 	}
 
-	// TODO - Should be IDisposable
-	// MatchMaking Key-Value Pair Marshaller
 	public class MMKVPMarshaller {
 		private IntPtr m_pNativeArray;
 		private IntPtr m_pArrayEntries;
@@ -141,13 +121,11 @@ namespace Steamworks {
 			}
 
 			int sizeOfMMKVP = Marshal.SizeOf(typeof(MatchMakingKeyValuePair_t));
-
 			m_pNativeArray = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(IntPtr)) * filters.Length);
 			m_pArrayEntries = Marshal.AllocHGlobal(sizeOfMMKVP * filters.Length);
 			for (int i = 0; i < filters.Length; ++i) {
 				Marshal.StructureToPtr(filters[i], new IntPtr(m_pArrayEntries.ToInt64() + (i * sizeOfMMKVP)), false);
 			}
-
 			Marshal.WriteIntPtr(m_pNativeArray, m_pArrayEntries);
 		}
 
@@ -174,15 +152,8 @@ namespace Steamworks {
 		extern static int GetModuleFileName(IntPtr hModule, StringBuilder strFullPath, int nSize);
 #endif
 
-		/// <summary>
 		/// This is an optional runtime check to ensure that the dlls are the correct version. Returns false only if the steam_api.dll is found and it's the wrong size or version number.
-		/// </summary>
-		public static bool Test() {
-			return true;
-		}
-
-		private static bool CheckSteamAPIDLL() {
-			return false;
-		}
+		public static bool Test() { return true; }
+		private static bool CheckSteamAPIDLL() { return false; }
 	}
 }
