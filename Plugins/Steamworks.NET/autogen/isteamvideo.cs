@@ -8,20 +8,15 @@ using IntPtr = System.IntPtr;
 
 namespace Steamworks {
 	public static class SteamVideo {
-		/// <para> Get a URL suitable for streaming the given Video app ID's video</para>
-		public static void GetVideoURL(AppId_t unVideoAppID) {
-		}
-
-		/// <para> returns true if user is uploading a live broadcast</para>
+		/// Get a URL suitable for streaming the given Video app ID's video
+		public static void GetVideoURL(AppId_t unVideoAppID) { }
+		/// returns true if user is uploading a live broadcast
 		public static bool IsBroadcasting(out int pnNumViewers) {
 			pnNumViewers = 0;
 			return false;
 		}
-
-		/// <para> Get the OPF Details for 360 Video Playback</para>
-		public static void GetOPFSettings(AppId_t unVideoAppID) {
-		}
-
+		/// Get the OPF Details for 360 Video Playback
+		public static void GetOPFSettings(AppId_t unVideoAppID) { }
 		public static bool GetOPFStringForApp(AppId_t unVideoAppID, out string pchBuffer, ref int pnBufferSize) {
 			pchBuffer = "";
 			return false;
