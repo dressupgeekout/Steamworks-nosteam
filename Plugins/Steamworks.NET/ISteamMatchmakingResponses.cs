@@ -7,22 +7,9 @@ using System;
 using System.Runtime.InteropServices;
 
 namespace Steamworks {
-	//-----------------------------------------------------------------------------
-	// Purpose: Callback interface for receiving responses after a server list refresh
-	// or an individual server update.
-	//
-	// Since you get these callbacks after requesting full list refreshes you will
-	// usually implement this interface inside an object like CServerBrowser.  If that
-	// object is getting destructed you should use ISteamMatchMakingServers()->CancelQuery()
-	// to cancel any in-progress queries so you don't get a callback into the destructed
-	// object and crash.
-	//-----------------------------------------------------------------------------
 	public class ISteamMatchmakingServerListResponse {
-		// Server has responded ok with updated data
 		public delegate void ServerResponded(HServerListRequest hRequest, int iServer);
-		// Server has failed to respond
 		public delegate void ServerFailedToRespond(HServerListRequest hRequest, int iServer);
-		// A list refresh you had initiated is now 100% completed
 		public delegate void RefreshComplete(HServerListRequest hRequest, EMatchMakingServerResponse response);
 
 		private VTable m_VTable;
@@ -106,23 +93,9 @@ namespace Steamworks {
 		}
 	};
 
-	//-----------------------------------------------------------------------------
-	// Purpose: Callback interface for receiving responses after pinging an individual server 
-	//
-	// These callbacks all occur in response to querying an individual server
-	// via the ISteamMatchmakingServers()->PingServer() call below.  If you are 
-	// destructing an object that implements this interface then you should call 
-	// ISteamMatchmakingServers()->CancelServerQuery() passing in the handle to the query
-	// which is in progress.  Failure to cancel in progress queries when destructing
-	// a callback handler may result in a crash when a callback later occurs.
-	//-----------------------------------------------------------------------------
 	public class ISteamMatchmakingPingResponse {
-		// Server has responded successfully and has updated data
 		public delegate void ServerResponded(gameserveritem_t server);
-
-		// Server failed to respond to the ping request
 		public delegate void ServerFailedToRespond();
-
 		private VTable m_VTable;
 		private IntPtr m_pVTable;
 		private GCHandle m_pGCHandle;
@@ -158,19 +131,15 @@ namespace Steamworks {
 		private delegate void InternalServerResponded(gameserveritem_t server);
 		[UnmanagedFunctionPointer(CallingConvention.StdCall)]
 		private delegate void InternalServerFailedToRespond();
-		private void InternalOnServerResponded(gameserveritem_t server) {
-		}
-		private void InternalOnServerFailedToRespond() {
-		}
+		private void InternalOnServerResponded(gameserveritem_t server) { }
+		private void InternalOnServerFailedToRespond() { }
 #else
 		[UnmanagedFunctionPointer(CallingConvention.ThisCall)]
 		private delegate void InternalServerResponded(IntPtr thisptr, gameserveritem_t server);
 		[UnmanagedFunctionPointer(CallingConvention.ThisCall)]
 		private delegate void InternalServerFailedToRespond(IntPtr thisptr);
-		private void InternalOnServerResponded(IntPtr thisptr, gameserveritem_t server) {
-		}
-		private void InternalOnServerFailedToRespond(IntPtr thisptr) {
-		}
+		private void InternalOnServerResponded(IntPtr thisptr, gameserveritem_t server) { }
+		private void InternalOnServerFailedToRespond(IntPtr thisptr) { }
 #endif
 
 		[StructLayout(LayoutKind.Sequential)]
@@ -189,29 +158,10 @@ namespace Steamworks {
 		}
 	};
 
-	//-----------------------------------------------------------------------------
-	// Purpose: Callback interface for receiving responses after requesting details on
-	// who is playing on a particular server.
-	//
-	// These callbacks all occur in response to querying an individual server
-	// via the ISteamMatchmakingServers()->PlayerDetails() call below.  If you are 
-	// destructing an object that implements this interface then you should call 
-	// ISteamMatchmakingServers()->CancelServerQuery() passing in the handle to the query
-	// which is in progress.  Failure to cancel in progress queries when destructing
-	// a callback handler may result in a crash when a callback later occurs.
-	//-----------------------------------------------------------------------------
 	public class ISteamMatchmakingPlayersResponse {
-		// Got data on a new player on the server -- you'll get this callback once per player
-		// on the server which you have requested player data on.
 		public delegate void AddPlayerToList(string pchName, int nScore, float flTimePlayed);
-
-		// The server failed to respond to the request for player details
 		public delegate void PlayersFailedToRespond();
-
-		// The server has finished responding to the player details request 
-		// (ie, you won't get anymore AddPlayerToList callbacks)
 		public delegate void PlayersRefreshComplete();
-
 		private VTable m_VTable;
 		private IntPtr m_pVTable;
 		private GCHandle m_pGCHandle;
@@ -252,12 +202,9 @@ namespace Steamworks {
 		public delegate void InternalPlayersFailedToRespond();
 		[UnmanagedFunctionPointer(CallingConvention.StdCall)]
 		public delegate void InternalPlayersRefreshComplete();
-		private void InternalOnAddPlayerToList(IntPtr pchName, int nScore, float flTimePlayed) {
-		}
-		private void InternalOnPlayersFailedToRespond() {
-		}
-		private void InternalOnPlayersRefreshComplete() {
-		}
+		private void InternalOnAddPlayerToList(IntPtr pchName, int nScore, float flTimePlayed) { }
+		private void InternalOnPlayersFailedToRespond() { }
+		private void InternalOnPlayersRefreshComplete() { }
 #else
 		[UnmanagedFunctionPointer(CallingConvention.ThisCall)]
 		public delegate void InternalAddPlayerToList(IntPtr thisptr, IntPtr pchName, int nScore, float flTimePlayed);
@@ -265,12 +212,9 @@ namespace Steamworks {
 		public delegate void InternalPlayersFailedToRespond(IntPtr thisptr);
 		[UnmanagedFunctionPointer(CallingConvention.ThisCall)]
 		public delegate void InternalPlayersRefreshComplete(IntPtr thisptr);
-		private void InternalOnAddPlayerToList(IntPtr thisptr, IntPtr pchName, int nScore, float flTimePlayed) {
-		}
-		private void InternalOnPlayersFailedToRespond(IntPtr thisptr) {
-		}
-		private void InternalOnPlayersRefreshComplete(IntPtr thisptr) {
-		}
+		private void InternalOnAddPlayerToList(IntPtr thisptr, IntPtr pchName, int nScore, float flTimePlayed) { }
+		private void InternalOnPlayersFailedToRespond(IntPtr thisptr) { }
+		private void InternalOnPlayersRefreshComplete(IntPtr thisptr) { }
 #endif
 
 		[StructLayout(LayoutKind.Sequential)]
@@ -293,29 +237,10 @@ namespace Steamworks {
 		}
 	};
 
-	//-----------------------------------------------------------------------------
-	// Purpose: Callback interface for receiving responses after requesting rules
-	// details on a particular server.
-	//
-	// These callbacks all occur in response to querying an individual server
-	// via the ISteamMatchmakingServers()->ServerRules() call below.  If you are 
-	// destructing an object that implements this interface then you should call 
-	// ISteamMatchmakingServers()->CancelServerQuery() passing in the handle to the query
-	// which is in progress.  Failure to cancel in progress queries when destructing
-	// a callback handler may result in a crash when a callback later occurs.
-	//-----------------------------------------------------------------------------
 	public class ISteamMatchmakingRulesResponse {
-		// Got data on a rule on the server -- you'll get one of these per rule defined on
-		// the server you are querying
 		public delegate void RulesResponded(string pchRule, string pchValue);
-
-		// The server failed to respond to the request for rule details
 		public delegate void RulesFailedToRespond();
-
-		// The server has finished responding to the rule details request 
-		// (ie, you won't get anymore RulesResponded callbacks)
 		public delegate void RulesRefreshComplete();
-
 		private VTable m_VTable;
 		private IntPtr m_pVTable;
 		private GCHandle m_pGCHandle;
@@ -356,12 +281,9 @@ namespace Steamworks {
 		public delegate void InternalRulesFailedToRespond();
 		[UnmanagedFunctionPointer(CallingConvention.StdCall)]
 		public delegate void InternalRulesRefreshComplete();
-		private void InternalOnRulesResponded(IntPtr pchRule, IntPtr pchValue) {
-		}
-		private void InternalOnRulesFailedToRespond() {
-		}
-		private void InternalOnRulesRefreshComplete() {
-		}
+		private void InternalOnRulesResponded(IntPtr pchRule, IntPtr pchValue) { }
+		private void InternalOnRulesFailedToRespond() { }
+		private void InternalOnRulesRefreshComplete() { }
 #else
 		[UnmanagedFunctionPointer(CallingConvention.ThisCall)]
 		public delegate void InternalRulesResponded(IntPtr thisptr, IntPtr pchRule, IntPtr pchValue);
@@ -369,12 +291,9 @@ namespace Steamworks {
 		public delegate void InternalRulesFailedToRespond(IntPtr thisptr);
 		[UnmanagedFunctionPointer(CallingConvention.ThisCall)]
 		public delegate void InternalRulesRefreshComplete(IntPtr thisptr);
-		private void InternalOnRulesResponded(IntPtr thisptr, IntPtr pchRule, IntPtr pchValue) {
-		}
-		private void InternalOnRulesFailedToRespond(IntPtr thisptr) {
-		}
-		private void InternalOnRulesRefreshComplete(IntPtr thisptr) {
-		}
+		private void InternalOnRulesResponded(IntPtr thisptr, IntPtr pchRule, IntPtr pchValue) { }
+		private void InternalOnRulesFailedToRespond(IntPtr thisptr) { }
+		private void InternalOnRulesRefreshComplete(IntPtr thisptr) { }
 #endif
 
 		[StructLayout(LayoutKind.Sequential)]

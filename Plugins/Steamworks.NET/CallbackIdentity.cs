@@ -5,16 +5,12 @@
 
 namespace Steamworks {
 	class CallbackIdentities {
-		public static int GetCallbackIdentity(System.Type callbackStruct) {
-			return 0;
-		}
+		public static int GetCallbackIdentity(System.Type callbackStruct) { return 0; }
 	}
 
 	[System.AttributeUsage(System.AttributeTargets.Struct, AllowMultiple = false)]
 	internal class CallbackIdentityAttribute : System.Attribute {
 		public int Identity { get; set; }
-		public CallbackIdentityAttribute(int callbackNum) {
-			Identity = callbackNum;
-		}
+		public CallbackIdentityAttribute(int callbackNum) { Identity = callbackNum; }
 	}
 }
