@@ -12,6 +12,7 @@ X means tested and working, empty means not tested
 |The Dishwasher: Vampire Smile	|X|X||||
 |Hidden In Plain Sight	|X||||not tested beyond menu because of mandatory multiplayer|
 |Hyphen			|X|X||||
+|One Finger Death Punch	|X|X||||
 |Press X to Not Die	|X|X||||
 |Salt & Sanctuary	|X|X||||
 |Solaroids:Prologue	|X|X|||Early Access version|
