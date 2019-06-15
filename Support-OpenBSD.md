@@ -10,7 +10,7 @@ X means tested and working, empty means not tested
 |Charlie Murder		|X|X||||
 |CometStriker		|X|X||||
 |The Dishwasher: Vampire Smile	|X|X||||
-|Hidden In Plain Sight	|X||||not tested beyond menu because of is mandatory multiplayer|
+|Hidden In Plain Sight	|X||||not tested beyond menu because of mandatory multiplayer|
 |Hyphen			|X|X||||
 |Press X to Not Die	|X|X||||
 |Salt & Sanctuary	|X|X||||
