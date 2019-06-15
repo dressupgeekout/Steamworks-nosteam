@@ -323,25 +323,5 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Steamworks.NET\redist\linux\launchscript">
-      <Link>Steamworks.NET\redist\linux\launchscript</Link>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Steamworks.NET\redist\steam_api.dll">
-      <Link>Steamworks.NET\redist\steam_api.dll</Link>
-    </Content>
-    <Content Include="Steamworks.NET\redist\steam_appid.txt">
-      <Link>Steamworks.NET\redist\steam_appid.txt</Link>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
