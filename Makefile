@@ -25,10 +25,7 @@ Steamworks.NET/bin/Steamworks.NET.dll:	Steamworks.NET/*.cs \
 				Steamworks.NET/types/SteamUnifiedMessages/*.cs \
 				Steamworks.NET/types/SteamUserStats/*.cs \
 				Steamworks.NET/types/Steam_api_common/*.cs
-	cd Steamworks.NET && xbuild Steamworks.NET.sln
-
-native:
-	$(MAKE) -C native
+	@cd Steamworks.NET && xbuild Steamworks.NET.sln
 
 install: Steamworks.NET/bin/Steamworks.NET.dll native/libSteamworksNative.so
 	install -d $(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
@@ -37,7 +34,10 @@ install: Steamworks.NET/bin/Steamworks.NET.dll native/libSteamworksNative.so
 	install native/libSteamworksNative.so \
 		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
 
-.PHONY: clean uninstall
+.PHONY: clean uninstall native
+native:
+	$(MAKE) -C native
+
 clean:
 	@rm -rf Steamworks.NET/{bin,obj}
 	@$(MAKE) -C native clean

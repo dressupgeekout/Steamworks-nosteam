@@ -1,4 +1,4 @@
 /Steamworks.NET/bin
 /Steamworks.NET/obj
 /native/*.o
-/native/*.so
+/native/*.so.*
