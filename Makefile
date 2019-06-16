@@ -1,13 +1,15 @@
+.PHONY: clean
+
 all: Steamworks.NET.dll native
 
-Steamworks.NET.dll:
-	xbuild "./Steamworks.NET.sln"
+Steamworks.NET.dll: Steamworks.NET.sln
+	cd Steamworks.NET && xbuild Steamworks.NET.sln
+
 native:
 	$(MAKE) -C native
 
 #install:
 
-.PHONY: clean
 
 clean:
 	rm -rf bin obj
