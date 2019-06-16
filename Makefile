@@ -1,3 +1,5 @@
+PREFIX ?=	/usr/local
+
 all: Steamworks.NET/bin/Steamworks.NET.dll native
 
 Steamworks.NET/bin/Steamworks.NET.dll:	Steamworks.NET/*.cs \
@@ -28,9 +30,18 @@ Steamworks.NET/bin/Steamworks.NET.dll:	Steamworks.NET/*.cs \
 native:
 	$(MAKE) -C native
 
-#install:
+install: Steamworks.NET/bin/Steamworks.NET.dll native/libSteamworksNative.so
+	install -d $(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
+	install Steamworks.NET/bin/Steamworks.NET.dll \
+		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
+	install native/libSteamworksNative.so \
+		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
 
-.PHONY: clean
+.PHONY: clean uninstall
 clean:
-	rm -rf Steamworks.NET/{bin,obj}
-	$(MAKE) -C native clean
+	@rm -rf Steamworks.NET/{bin,obj}
+	@$(MAKE) -C native clean
+
+uninstall:
+	rm $(PREFIX)/lib/steamworks-nosteam/{Steamworks.NET.dll,libSteamworksNative.so}
+	rmdir $(PREFIX)/lib/steamworks-nosteam/
