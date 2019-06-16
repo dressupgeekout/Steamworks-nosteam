@@ -61,7 +61,10 @@ uint32_t GetAppID() { return (uint32_t) 0; }
 int GetAppBuildId() { return 0; }
 int GetCurrentStats() { return 0; }
 bool IsSubscribedApp(uint32_t appID) { return false; }
-char *GetLaunchQueryParam(char *paramName) { return ""; }
+char *GetLaunchQueryParam(char *paramName) {
+	char *ret = NULL;
+	return ret;
+}
 void ActivateFriendsOverlay() { }
 void ActivateStatsOverlay() { }
 void ActivateWebPage(const char *URL) { }
@@ -76,8 +79,14 @@ bool ShowGamepadTextInput(
 ) { return false; }
 void RunCallbacks() { }
 uint32_t GetUserAccountID() { return (uint32_t) 0; }
-const char *GetFriendNameByID(const uint32_t friendSteamID) { return ""; }
-const char *GetPlayersName() { return ""; }
+const char *GetFriendNameByID(const uint32_t friendSteamID) {
+	char *ret = NULL;
+	return ret;
+}
+const char *GetPlayersName() {
+	char *ret = NULL;
+	return ret;
+}
 uint32_t GetFriendCount() { return (uint32_t) 0; }
 uint32_t GetFriendByIndex(const int32_t index) { return (uint32_t) 0; }
 uint32_t GetSmallFriendAvatar(const uint32_t friendSteamID) { return (uint32_t) 0; }
@@ -104,7 +113,10 @@ void ShareFile(const char *name) { }
 bool FileExists(const char *name) { return false; }
 bool GetByteQuota(int32_t *total, int32_t *available) { return false; }
 static char folder[300];
-char *GetUserDataFolder() { return ""; }
+char *GetUserDataFolder() {
+	char *ret = NULL;
+	return ret;
+}
 
 /* Steam::SteamUGC */
 void PublishFile(

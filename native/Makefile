@@ -1,5 +1,5 @@
 CXX ?=		c++
-CXXFLAGS ?=	-O2 -g
+CXXFLAGS ?=	-O2 -pipe
 LD ?=		ld
 NATIVE_MAJOR ?=	0
 NATIVE_MINOR ?=	0
