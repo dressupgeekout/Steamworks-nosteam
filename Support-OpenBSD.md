@@ -1,6 +1,6 @@
 # Games tested with the nosteam dll on OpenBSD
 
-## Working
+## Working (Steamworks.NET.dll)
 
 X means tested and working, empty means not tested
 
@@ -16,6 +16,12 @@ X means tested and working, empty means not tested
 |Press X to Not Die	|X|X||||
 |Salt & Sanctuary	|X|X||||
 |Solaroids:Prologue	|X|X|||Early Access version|
+
+## Working (libSteamworksNative.so.X.Y)
+
+|Game|Launch|Initial Play|Long Play|Completion|Comments|
+|:---|:----:|:----------:|:-------:|:--------:|:------:|
+|Cryptark		|X|X||||
 
 ## Not Working
 
