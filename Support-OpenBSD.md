@@ -22,9 +22,8 @@ X means tested and working, empty means not tested
 |Game|Launch|Initial Play|Long Play|Completion|Comments|
 |:---|:----:|:----------:|:-------:|:--------:|:------:|
 |Cryptark		|X|X||||
-|A Virus Named TOM	||||||
-|Khet-2.0		||||||
-|Hive			||||||
+|Khet-2.0		|X|X||||
+|Hive			|X|X||||
 
 ## Not Working
 
