@@ -539,6 +539,11 @@ uint32_t GetAppID()
 	return (uint32_t) 0;
 }
 
+int GetAppBuildId() { return 0; }
+int GetCurrentStats() { return 0; }
+bool IsSubscribedApp(uint32_t appID) { return false; }
+char *GetLaunchQueryParam(char *paramName) { return ""; }
+
 void ActivateFriendsOverlay()
 {
 	//SteamFriends()->ActivateGameOverlay("Settings");

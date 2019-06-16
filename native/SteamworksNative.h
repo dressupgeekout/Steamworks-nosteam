@@ -111,6 +111,11 @@ EXPORTFN bool Initialize(
 
 EXPORTFN uint32_t GetAppID();
 
+EXPORTFN int GetAppBuildId();
+EXPORTFN int GetCurrentStats();
+EXPORTFN bool IsSubscribedApp(uint32_t appID);
+EXPORTFN char *GetLaunchQueryParam(char *paramName);
+
 EXPORTFN void ActivateFriendsOverlay();
 
 EXPORTFN void ActivateStatsOverlay();
