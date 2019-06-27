@@ -16,6 +16,7 @@ X means tested and working, empty means not tested
 |Press X to Not Die	|X|X||||
 |Salt & Sanctuary	|X|X||||
 |Solaroids:Prologue	|X|X|||Early Access version|
+|SpeedRunners		|X|X|||no gamepad or online multiplayer support|
 
 ## Working (libSteamworksNative.so.X.Y)
 
