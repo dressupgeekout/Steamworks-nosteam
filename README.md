@@ -23,10 +23,21 @@ How to Build
 -----
 
 ```
-xbuild Standalone/Steamworks.NET.sln
+$ make all
 ```
 
-This will build `Steamworks.NET.dll` in `Standalone/bin/x64/OSX-Linux/`.
+This will build `Steamworks.NET.dll` in `Steamworks.NET/bin/` and
+`libSteamworksNative.so.X.Y` in `native/`.
+
+How to Install
+----
+
+```
+# make install
+```
+
+This will install `Steamworks.NET.dll` and `libSteamworksNative.so.X.Y`
+in `$(PREFIX)/lib/steamworks-nosteam/`.
 
 GitHub repo: https://github.com/rfht/Steamworks.NET-nosteam
 
