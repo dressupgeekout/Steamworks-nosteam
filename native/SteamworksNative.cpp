@@ -1,6 +1,8 @@
 /* SteamworksNative - C# Wrapper for Steamworks Features - stub
  * Copyright (c) 2013-2014	Ethan "flibitijibibo" Lee
  * Copyright (c) 2019		Thomas Frohwein
+ *
+ * Licensed under zlib license (see file LICENSE).
  */
 
 #include "SteamworksNative.h"
