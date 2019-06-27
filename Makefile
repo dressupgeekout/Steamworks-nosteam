@@ -1,4 +1,4 @@
-PREFIX ?=	/usr/local
+PREFIX :=	/usr/local
 
 all: Steamworks.NET/bin/Steamworks.NET.dll native
 
