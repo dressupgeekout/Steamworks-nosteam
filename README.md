@@ -1,5 +1,5 @@
 Steamworks.NET-nosteam
-=======
+======================
 
 Drop-in replacement for Steamworks.NET.dll to run without Steam client present,
 e.g. if running on an operating system that doesn't feature a Steam client.
@@ -13,38 +13,39 @@ can be dropped in and is intended to keep the parent program running even in
 the absence of a Steam client.
 
 What's changed? (compared to original Steamworks.NET)
-----
+-----------------------------------------------------
 
 Functions return neutral values (0, empty string, IntPtr.Zero, or the default
 of a struct). In a few places, a string for a language or country must be
 returned for the game to work. This is currently set to "english" and "US".
 
 How to Build
------
+------------
 
 ```
 $ make all
 ```
 
-This will build `Steamworks.NET.dll` in `Steamworks.NET/bin/` and
-`libSteamworksNative.so.X.Y` in `native/`.
+This will build `Steamworks.NET.dll` in `Steamworks.NET/bin/`,
+`libSteamworksNative.so.X.Y` in `native/`, and `libsteamwrapper.so.X.Y`
+in `wrapper/`.
 
 How to Install
-----
+--------------
 
 ```
 # make install
 ```
 
-This will install `Steamworks.NET.dll` and `libSteamworksNative.so.X.Y`
-in `$(PREFIX)/lib/steamworks-nosteam/`.
+This will install `Steamworks.NET.dll`, `libSteamworksNative.so.X.Y`,
+and `libsteamwrapper.so.X.Y` in `$(PREFIX)/lib/steamworks-nosteam/`.
 
 GitHub repo: https://github.com/rfht/Steamworks.NET-nosteam
 
 # Original README.md below (from upstream https://github.com/rlabrecque/Steamworks.NET)
 
 Steamworks.NET
-=======
+==============
 
 _Steamworks.NET_ is a C# Wrapper for Valve's Steamworks API, it can be used either with Unity or your C# based Application.
 
