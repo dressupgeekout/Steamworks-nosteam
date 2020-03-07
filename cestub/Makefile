@@ -20,4 +20,4 @@ CommunityExpressSW.o:
 
 .PHONY: clean
 clean:
-	@$(RM) libcestub.so cestub.o
+	@$(RM) libcestub.so.* cestub.o
