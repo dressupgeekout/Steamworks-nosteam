@@ -1,23 +1,16 @@
 Steamworks.NET-nosteam
 ======================
 
-Drop-in replacement for Steamworks.NET.dll to run without Steam client present,
+Drop-in replacement for several Steamworks wrappers, to run without Steam client present,
 e.g. if running on an operating system that doesn't feature a Steam client.
 
 Why?
 ----
 
-A number of games are made largely platform-independent, but use Steamworks.NET
-and error out if no Steam client is present. This project builds a .dll that
-can be dropped in and is intended to keep the parent program running even in
-the absence of a Steam client.
-
-What's changed? (compared to original Steamworks.NET)
------------------------------------------------------
-
-Functions return neutral values (0, empty string, IntPtr.Zero, or the default
-of a struct). In a few places, a string for a language or country must be
-returned for the game to work. This is currently set to "english" and "US".
+A number of games are made largely platform-independent, but use try to connect
+to Steamworks and error out if no Steam client is present. This project builds
+several stub libraries that can be dropped in as a replacement, so that the
+parent program can keep running.
 
 How to Build
 ------------
@@ -26,9 +19,12 @@ How to Build
 $ make all
 ```
 
-This will build `Steamworks.NET.dll` in `Steamworks.NET/bin/`,
-`libSteamworksNative.so.X.Y` in `native/`, and `libsteamwrapper.so.X.Y`
-in `wrapper/`.
+This will build the following files:
+* `Steamworks.NET/bin/Steamworks.NET.dll`
+* `native/libSteamworksNative.so.X.Y`
+* `wrapper/libsteamwrapper.so.X.Y`
+* `hlsteam/steam.hdll`
+* `cestub/libcestub.so.X.Y`
 
 How to Install
 --------------
@@ -37,42 +33,6 @@ How to Install
 # make install
 ```
 
-This will install `Steamworks.NET.dll`, `libSteamworksNative.so.X.Y`,
-and `libsteamwrapper.so.X.Y` in `$(PREFIX)/lib/steamworks-nosteam/`.
+This will install the files in `$(PREFIX)/lib/steamworks-nosteam/`.
 
-GitHub repo: https://github.com/rfht/Steamworks.NET-nosteam
-
-# Original README.md below (from upstream https://github.com/rlabrecque/Steamworks.NET)
-
-Steamworks.NET
-==============
-
-_Steamworks.NET_ is a C# Wrapper for Valve's Steamworks API, it can be used either with Unity or your C# based Application.
-
-_Steamworks.NET_ was designed to be as close as possible to the original C++ API, as such the documentation provided from Valve largely covers usage of _Steamworks.NET_.
-Niceties and C# Idioms can be easily implemented on top of _Steamworks.NET_.
-
-_Steamworks.NET_ currently fully supports Windows, OSX, and Linux in both 32 and 64bit varieties. Currently building against Steamworks SDK 1.43.
-
-* Author: [Riley Labrecque](https://github.com/rlabrecque)
-* License: [MIT](http://www.opensource.org/licenses/mit-license.php)
-* [Documentation](https://steamworks.github.io/)
-* [Discussion Thread](http://steamcommunity.com/groups/steamworks/discussions/0/666827974770212954/)
-* [Reporting Issues](https://github.com/rlabrecque/Steamworks.NET/issues)
-* 1-on-1 support is available by donating $100 USD or greater.
- * Support can be obtained via [Email](mailto:support@rileylabrecque.com), [Skype](http://rileylabrecque.com/skype), or [Steam](http://steamcommunity.com/id/rlabrecque)
- * I can only help with Steamworks.NET specific issues, general API questions should be asked on the [Steamworks discussion board](http://steamcommunity.com/groups/steamworks/discussions).
-
-[![Support via Paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YFZZER8VNXKRC)
-
-
-[Installation Instructions](http://steamworks.github.io/installation/)
------
-
-Samples
------
-Check out these sample projects to get started:
-* [Steamworks.NET Example](https://github.com/rlabrecque/Steamworks.NET-Example)
-* [Steamworks.NET Test](https://github.com/rlabrecque/Steamworks.NET-Test)
-* [Steamworks.NET ChatClient](https://github.com/rlabrecque/Steamworks.NET-ChatClient)
-* [Steamworks.NET GameServerTest](https://github.com/rlabrecque/Steamworks.NET-GameServerTest)
+GitHub repo: https://github.com/rfht/Steamworks.-nosteam
