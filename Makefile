@@ -41,6 +41,7 @@ install: Steamworks.NET/bin/Steamworks.NET.dll native/libSteamworksNative.so.*
 		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
 
 .PHONY: clean uninstall native wrapper cestub hlsteam
+
 native:
 	$(MAKE) -C native
 
