@@ -15,7 +15,7 @@ libcestub.so: cestub.o
 		-o libcestub.so.$(NATIVE_MAJOR).$(NATIVE_MINOR) \
 		cestub.o
 
-CommunityExpressSW.o:
+cestub.o:
 	$(CC) $(CFLAGS) -fPIC -c cestub.c
 
 .PHONY: clean
