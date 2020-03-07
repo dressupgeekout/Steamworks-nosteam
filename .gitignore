@@ -1,4 +1,5 @@
 /Steamworks.NET/bin
 /Steamworks.NET/obj
-/native/*.o
-/native/*.so.*
+/*/*.o
+/*/*.so.*
+/hlsteam/*.hdll

@@ -26,6 +26,24 @@ X means tested and working, empty means not tested
 |Khet-2.0		|X|X||||
 |Hive			|X|X||||
 
+## Working (libsteamwrapper.so.X.Y)
+
+|Game|Launch|Initial Play|Long Play|Completion|Comments|
+|:---|:----:|:----------:|:-------:|:--------:|:------:|
+|Growing Pains		|X|X||||
+
+## Working (libcestub.so.X.Y, to replace libCommunityExpressSW.so)
+
+|Game|Launch|Initial Play|Long Play|Completion|Comments|
+|:---|:----:|:----------:|:-------:|:--------:|:------:|
+|Little Racers STREET		|X|X||||
+
+## Working (steam.hdll)
+
+|Game|Launch|Initial Play|Long Play|Completion|Comments|
+|:---|:----:|:----------:|:-------:|:--------:|:------:|
+|Northgard		|X|X||||
+
 ## Not Working
 
 |Game|Comment|

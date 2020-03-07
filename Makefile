@@ -1,6 +1,6 @@
-PREFIX ?=	/usr/local
+PREFIX :=	/usr/local
 
-all: Steamworks.NET/bin/Steamworks.NET.dll native
+all: Steamworks.NET/bin/Steamworks.NET.dll native wrapper cestub hlsteam
 
 Steamworks.NET/bin/Steamworks.NET.dll:	Steamworks.NET/*.cs \
 				Steamworks.NET/*.csproj \
@@ -33,15 +33,37 @@ install: Steamworks.NET/bin/Steamworks.NET.dll native/libSteamworksNative.so.*
 		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
 	install native/libSteamworksNative.so.* \
 		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
+	install wrapper/libsteamwrapper.so.* \
+		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
+	install cestub/libcestub.so.* \
+		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
+	install hlsteam/steam.hdll \
+		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
 
-.PHONY: clean uninstall native
+.PHONY: clean uninstall native wrapper cestub hlsteam
 native:
 	$(MAKE) -C native
+
+wrapper:
+	$(MAKE) -C wrapper
+
+cestub:
+	$(MAKE) -C cestub
+
+hlsteam:
+	$(MAKE) -C hlsteam
 
 clean:
 	@rm -rf Steamworks.NET/{bin,obj}
 	@$(MAKE) -C native clean
+	@$(MAKE) -C wrapper clean
+	@$(MAKE) -C cestub clean
+	@$(MAKE) -C hlsteam clean
 
 uninstall:
-	rm -f $(PREFIX)/lib/steamworks-nosteam/{Steamworks.NET.dll,libSteamworksNative.so.*}
+	rm -f $(PREFIX)/lib/steamworks-nosteam/Steamworks.NET.dll
+	rm -f $(PREFIX)/lib/steamworks-nosteam/libSteamworksNative.so.*
+	rm -f $(PREFIX)/lib/steamworks-nosteam/libsteamwrapper.so.*
+	rm -f $(PREFIX)/lib/steamworks-nosteam/libcestub.so.*
+	rm -f $(PREFIX)/lib/steamworks-nosteam/steam.hdll
 	rmdir $(PREFIX)/lib/steamworks-nosteam/
