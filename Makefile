@@ -27,7 +27,7 @@ Steamworks.NET/bin/Steamworks.NET.dll:	Steamworks.NET/*.cs \
 				Steamworks.NET/types/Steam_api_common/*.cs
 	@cd Steamworks.NET && xbuild Steamworks.NET.sln
 
-install: Steamworks.NET/bin/Steamworks.NET.dll native/libSteamworksNative.so.*
+install: all
 	install -d $(PREFIX)/lib/steamworks-nosteam/
 	install Steamworks.NET/bin/Steamworks.NET.dll \
 		$(PREFIX)/lib/steamworks-nosteam/
