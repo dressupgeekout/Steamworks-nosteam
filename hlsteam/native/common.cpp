@@ -81,6 +81,7 @@ static void GlobalEvent( int id, vdynamic *v ) {
 HL_PRIM bool HL_NAME(init)( vclosure *onEvent, vclosure *onGlobalEvent ){
 	printf("%s\n", __func__);
 	/* change return value to 1 if wanting to try enable Steam functions like GameNetworkingSockets */
+	/* this needs to return 1 to allow running Evoland Legendary Edition */
 	return 0;
 }
 
