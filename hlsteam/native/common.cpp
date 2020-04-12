@@ -78,17 +78,10 @@ static void GlobalEvent( int id, vdynamic *v ) {
 //#include "events.h"
 #undef GLOBAL_EVENTS
 
-/*
-vdynamic *CallbackHandler::EncodeOverlayActivated(int *d) {
-	HLValue ret;
-	ret.Set("active", d->m_bActive != 0);
-	return ret.value;
-}
-*/
-
 HL_PRIM bool HL_NAME(init)( vclosure *onEvent, vclosure *onGlobalEvent ){
 	printf("%s\n", __func__);
-	return 1;
+	/* change return value to 1 if wanting to try enable Steam functions like GameNetworkingSockets */
+	return 0;
 }
 
 HL_PRIM void HL_NAME(set_notification_position)( int pos ) {
@@ -124,7 +117,7 @@ HL_PRIM vuid HL_NAME(get_steam_id)(){
 
 HL_PRIM bool HL_NAME(restart_app_if_necessary)(int appId){
 	printf("%s\n", __func__);
-	return 0;
+	return false;
 }
 
 HL_PRIM bool HL_NAME(is_overlay_enabled)(){
