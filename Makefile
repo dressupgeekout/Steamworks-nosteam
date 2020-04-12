@@ -1,4 +1,4 @@
-PREFIX :=	/usr/local
+PREFIX ?=	/usr/local
 
 all: Steamworks.NET/bin/Steamworks.NET.dll native wrapper cestub hlsteam
 
@@ -28,17 +28,17 @@ Steamworks.NET/bin/Steamworks.NET.dll:	Steamworks.NET/*.cs \
 	@cd Steamworks.NET && xbuild Steamworks.NET.sln
 
 install: Steamworks.NET/bin/Steamworks.NET.dll native/libSteamworksNative.so.*
-	install -d $(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
+	install -d $(PREFIX)/lib/steamworks-nosteam/
 	install Steamworks.NET/bin/Steamworks.NET.dll \
-		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
+		$(PREFIX)/lib/steamworks-nosteam/
 	install native/libSteamworksNative.so.* \
-		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
+		$(PREFIX)/lib/steamworks-nosteam/
 	install wrapper/libsteamwrapper.so.* \
-		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
+		$(PREFIX)/lib/steamworks-nosteam/
 	install cestub/libcestub.so.* \
-		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
+		$(PREFIX)/lib/steamworks-nosteam/
 	install hlsteam/steam.hdll \
-		$(DESTDIR)$(PREFIX)/lib/steamworks-nosteam/
+		$(PREFIX)/lib/steamworks-nosteam/
 
 .PHONY: clean uninstall native wrapper cestub hlsteam
 
