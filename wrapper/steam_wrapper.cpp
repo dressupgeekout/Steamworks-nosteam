@@ -36,20 +36,18 @@ extern "C" int C_SteamAPI_Shutdown()
 
 extern "C" bool c_SteamAPI_Init()
 {
-	//return SteamAPI_Init();
+	return false;
 }
 
 extern "C" void c_SteamAPI_Shutdown()
 {
-	//SteamAPI_Shutdown();
 }
 
 extern "C" bool c_SteamAPI_RestartAppIfNecessary(uint32_t unOwnAppID)
 {
-	//return SteamAPI_RestartAppIfNecessary(unOwnAppID);
+	return false;
 }
 
-//What is this? Where is it defined? How do I wrap it? AAAAAAAAAAAAH.
 /*bool Steamworks_InitCEGLibrary()
 {
 	//return Steamworks_InitCEGLibrary();
@@ -57,452 +55,393 @@ extern "C" bool c_SteamAPI_RestartAppIfNecessary(uint32_t unOwnAppID)
 
 extern "C" bool c_SteamUser_BLoggedOn()
 {
-	//return SteamUser()->BLoggedOn();
+	return false;
 }
 
 extern "C" void c_SteamAPI_RunCallbacks()
 {
-	//return SteamAPI_RunCallbacks();
 }
 
 extern "C" bool c_SteamGameServer_Init(uint32_t unIP, uint16_t usSteamPort, uint16_t usGamePort, uint16_t usQueryPort, int eServerMode, const char* pchVersionString)
 {
-	//return SteamGameServer_Init(unIP, usSteamPort, usGamePort, usQueryPort, static_cast<EServerMode>(eServerMode), pchVersionString);
+	return false;
 }
 
 extern "C" void c_SteamGameServer_Shutdown()
 {
-	//SteamGameServer_Shutdown();
 }
 
 extern "C" void* c_SteamGameServer()
 {
-	//return SteamGameServer();
+	return nullptr;
 }
 
 extern "C" void c_SteamGameServer_SetModDir(const char *pszModDir)
 {
-	//SteamGameServer()->SetModDir(pszModDir);
 }
 
 extern "C" void c_SteamGameServer_SetProduct(const char *pszProduct)
 {
-	//SteamGameServer()->SetProduct(pszProduct);
 }
 
 extern "C" void c_SteamGameServer_SetGameDescription(const char *pszGameDescription)
 {
-	//SteamGameServer()->SetGameDescription(pszGameDescription);
 }
 
 extern "C" void c_SteamGameServer_LogOnAnonymous()
 {
-	//SteamGameServer()->LogOnAnonymous();
 }
 
 extern "C" void c_SteamGameServer_EnableHeartbeats(bool bActive)
 {
-	//SteamGameServer()->EnableHeartbeats(bActive);
 }
 
 extern "C" void c_SteamGameServer_LogOff()
 {
-	//SteamGameServer()->LogOff();
 }
 
 extern "C" void c_SteamGameServerNetworking_AcceptP2PSessionWithUser(void* steamIDRemote)
 {
-	//SteamGameServerNetworking()->AcceptP2PSessionWithUser(*static_cast<CSteamID* >(steamIDRemote));
 }
 
 extern "C" void c_SteamNetworking_AcceptP2PSessionWithUser(void* steamIDRemote)
 {
-	//SteamNetworking()->AcceptP2PSessionWithUser(*static_cast<CSteamID* >(steamIDRemote));
 }
 
 extern "C" int c_SteamGameServer_BeginAuthSession(const void *pAuthTicket, int cbAuthTicket, void* steamID)
 {
-	//return static_cast<c_EBeginAuthSessionResult>(SteamGameServer()->BeginAuthSession(pAuthTicket, cbAuthTicket, *static_cast<CSteamID* >(steamID)));
+	return 0;
 }
 
 extern "C" void c_SteamGameServer_EndAuthSession(void* steamID)
 {
-	//SteamGameServer()->EndAuthSession(*static_cast<CSteamID* >(steamID));
 }
 
 extern "C" bool c_SteamGameServerNetworking_SendP2PPacket(void* steamIDRemote, const void *pubData, uint32_t cubData, int eP2PSendType, int nChannel)
 {
-	//return SteamGameServerNetworking()->SendP2PPacket(*static_cast<CSteamID* >(steamIDRemote), pubData, cubData, static_cast<EP2PSend>(eP2PSendType), nChannel);
+	return false;
 }
 
 extern "C" bool c_SteamGameServerNetworking_IsP2PPacketAvailable(uint32_t *pcubMsgSize, int nChannel)
 {
-	//return SteamGameServerNetworking()->IsP2PPacketAvailable(pcubMsgSize, nChannel);
+	return false;
 }
 
 extern "C" bool c_SteamGameServerNetworking_ReadP2PPacket(void *pubDest, uint32_t cubDest, uint32_t *pcubMsgSize, void* psteamIDRemote, int nChannel)
 {
-	//return SteamGameServerNetworking()->ReadP2PPacket(pubDest, cubDest, pcubMsgSize, static_cast<CSteamID* >(psteamIDRemote), nChannel);
+	return false;
 }
 
 extern "C" uint64_t c_SteamGameServer_GetSteamID_ConvertToUInt64()
 {
-	//return SteamGameServer()->GetSteamID().ConvertToUint64();
+	return (uint64_t)0;
 }
 
 extern "C" bool c_SteamGameServer_BSecure()
 {
-	//return SteamGameServer()->BSecure();
+	return false;
 }
 
 extern "C" void c_SteamGameServer_SendUserDisconnect(void* steamIDUser)
 {
-	//SteamGameServer()->SendUserDisconnect(*static_cast<CSteamID *>(steamIDUser));
 }
 
 extern "C" void c_SteamGameServer_RunCallbacks()
 {
-	//SteamGameServer_RunCallbacks();
 }
 
 extern "C" void c_SteamGameServer_SetMaxPlayerCount(int cPlayersMax)
 {
-	//SteamGameServer()->SetMaxPlayerCount(cPlayersMax);
 }
 
 extern "C" void c_SteamGameServer_SetPasswordProtected(bool bPasswordProtected)
 {
-	//SteamGameServer()->SetPasswordProtected(bPasswordProtected);
 }
 
 extern "C" void c_SteamGameServer_SetServerName(const char *pszServerName)
 {
-	//SteamGameServer()->SetServerName(pszServerName);
 }
 
 extern "C" void c_SteamGameServer_SetBotPlayerCount(int cBotplayers)
 {
-	//SteamGameServer()->SetBotPlayerCount(cBotplayers);
 }
 
 extern "C" void c_SteamGameServer_SetMapName(const char *pszMapName)
 {
-	//SteamGameServer()->SetMapName(pszMapName);
 }
 
 extern "C" bool c_SteamGameServer_BUpdateUserData(void* steamIDUser, const char *pchPlayerName, uint32_t uScore)
 {
-	//return SteamGameServer()->BUpdateUserData(*static_cast<CSteamID* >(steamIDUser), pchPlayerName, uScore);
+	return false;
 }
 
 extern "C" int64_t c_SteamUtils_GetAppID()
 {
-	//return SteamUtils()->GetAppID();
+	return (int64_t)0;
 }
 
 extern "C" bool c_SteamUser()
 {
-	//if (SteamUser())
-	//{
-	//	return true;
-	//}
 	return false;
 }
 
 extern "C" void* c_SteamUser_GetSteamID()
 {
-	//CSteamID *id = new CSteamID();
-	//*id = SteamUser()->GetSteamID();
-	//return id; //Still don't like this method.
+	return nullptr;
 }
 
 extern "C" void c_Free_CSteamID(void *steamID)
 {
-	//CSteamID *id = static_cast<CSteamID*>(steamID);
-	//delete id;
 }
 
 extern "C" void* c_AllocateNew_CSteamID()
 {
-	//CSteamID *id = new CSteamID();
-	//return id;
+	return nullptr;
 }
 
 extern "C" bool c_SteamUserStats()
 {
-	//if (SteamUserStats())
-	//{
-	//	return true;
-	//}
 	return false;
 }
 
 extern "C" bool c_SteamNetworking_SendP2PPacket(void* steamIDRemote, const void *pubData, uint32_t cubData, int eP2PSendType, int nChannel)
 {
-	//return SteamNetworking()->SendP2PPacket(*static_cast<CSteamID* >(steamIDRemote), pubData, cubData, static_cast<EP2PSend>(eP2PSendType), nChannel);
+	return false;
 }
 
 extern "C" bool c_SteamNetworking_IsP2PPacketAvailable(uint32_t *pcubMsgSize, int nChannel)
 {
-	//return SteamNetworking()->IsP2PPacketAvailable(pcubMsgSize, nChannel);
+	return false;
 }
 
 extern "C" bool c_SteamNetworking_ReadP2PPacket(void *pubDest, uint32_t cubDest, uint32_t *pcubMsgSize, void* psteamIDRemote, int nChannel)
 {
-	//return SteamNetworking()->ReadP2PPacket(pubDest, cubDest, pcubMsgSize, static_cast<CSteamID* >(psteamIDRemote), nChannel);
+	return false;
 }
 
 extern "C" bool c_SteamUserStats_RequestCurrentStats()
 {
-	//return SteamUserStats()->RequestCurrentStats();
+	return false;
 }
 
 extern "C" bool c_SteamUserStats_SetAchievement(const char *pchName)
 {
-	//return SteamUserStats()->SetAchievement(pchName);
+	return false;
 }
 
 extern "C" int c_SteamUserStats_GetAchievementIcon(const char *pchName)
 {
-	//return SteamUserStats()->GetAchievementIcon(pchName);
+	return 0;
 }
 
 extern "C" bool c_SteamUserStats_SetStat(const char *pchName, int32_t nData)
 {
-	//return SteamUserStats()->SetStat(pchName, nData);
+	return false;
 }
 
 extern "C" bool c_SteamUserStats_UpdateAvgRateStat(const char *pchName, float flCountThisSession, double dSessionLength)
 {
-	//return SteamUserStats()->UpdateAvgRateStat(pchName, flCountThisSession, dSessionLength);
+	return false;
 }
 
 extern "C" bool c_SteamUserStats_GetStat_Int(const char *pchName, int32_t *pData)
 {
-	//return SteamUserStats()->GetStat(pchName, pData);
+	return false;
 }
 
 extern "C" bool c_SteamUserStats_GetStat_Float(const char *pchName, float *pData)
 {
-	//return SteamUserStats()->GetStat(pchName, pData);
+	return false;
 }
 
 extern "C" bool c_SteamUserStats_StoreStats()
 {
-	//return SteamUserStats()->StoreStats();
+	return false;
 }
 
 extern "C" const char* c_SteamUserStats_GetAchievementDisplayAttribute(const char *pchName, const char *pchKey)
 {
-	//return SteamUserStats()->GetAchievementDisplayAttribute(pchName, pchKey);
+	return "";
 }
 
 extern "C" bool c_CSteamID_IsValid(void *CSteamID_instance)
 {
-	//return static_cast<CSteamID*>(CSteamID_instance)->IsValid();
+	return false;
 }
 
 extern "C" int c_SteamMatchmaking_GetNumLobbyMembers(void *steamIDLobby)
 {
-	//return SteamMatchmaking()->GetNumLobbyMembers(*static_cast<CSteamID*>(steamIDLobby)); //This looks ugly. Will it work?
+	return 0;
 }
 
 extern "C" void* c_SteamMatchmaking_GetLobbyMemberByIndex(void *steamIDLobby, int iMember)
 {
-	//CSteamID id = SteamMatchmaking()->GetLobbyMemberByIndex(*static_cast<CSteamID*>(steamIDLobby), iMember);
-	//return static_cast<void*>(&id);
-	//CSteamID *id = new CSteamID();
-	//*id = SteamMatchmaking()->GetLobbyMemberByIndex(*static_cast<CSteamID*>(steamIDLobby), iMember);
-	//return id; //Still don't like this method.
+	return nullptr;
 }
 
 extern "C" const char* c_SteamFriends_GetPersonaName()
 {
-	//return SteamFriends()->GetPersonaName();
+	return "";
 }
 
 extern "C" const char* c_SteamFriends_GetFriendPersonaName(void *steamIDLobbyMember)
 {
-	//return SteamFriends()->GetFriendPersonaName(*static_cast<CSteamID*>(steamIDLobbyMember));
+	return "";
 }
 
 extern "C" const char* c_SteamMatchmaking_GetLobbyMemberData(void *steamIDLobby, void *steamIDUser, const char *pchKey)
 {
-	//return SteamMatchmaking()->GetLobbyMemberData(*static_cast<CSteamID*>(steamIDLobby), *static_cast<CSteamID*>(steamIDUser), pchKey);
+	return "";
 }
 
 extern "C" void* c_SteamMatchmaking_GetLobbyOwner(void *steamIDLobby)
 {
-	//CSteamID *id = new CSteamID();
-	//*id = SteamMatchmaking()->GetLobbyOwner(*static_cast<CSteamID*>(steamIDLobby));
-	//return id; //Still don't like this method.
+	return nullptr;
 }
 
 extern "C" bool c_SteamFriends_IsUserInSource(void *steamIDUser, void *steamIDSource)
 {
-	//return SteamFriends()->IsUserInSource(*static_cast<CSteamID*>(steamIDUser), *static_cast<CSteamID*>(steamIDSource));
+	return false;
 }
 
 extern "C" void* c_SteamMatchmaking_GetLobbyByIndex(int iLobby)
 {
-	//CSteamID *id = new CSteamID();
-	//*id = SteamMatchmaking()->GetLobbyByIndex(iLobby);
-	//return id;
-	return NULL;
+	return nullptr;
 }
 
 extern "C" bool c_SteamMatchmaking_RequestLobbyData(void *steamIDLobby)
 {
-	//return SteamMatchmaking()->RequestLobbyData(*static_cast<CSteamID*>(steamIDLobby));
+	return false;
 }
 
 //steamIDLobby.GetAccountID()
 extern "C" int c_CSteamID_GetAccountID(void *CSteamID_instance)
 {
-	//return static_cast<CSteamID*>(CSteamID_instance)->GetAccountID();
+	return 0;
 }
 
 extern "C" bool c_SteamUtils_IsAPICallCompleted(unsigned long hSteamAPICall, bool *pbFailed)
 {
-	//return SteamUtils()->IsAPICallCompleted(hSteamAPICall, pbFailed);
+	return false;
 }
 
 extern "C" bool c_SteamUtils_GetAPICallResult(int hSteamAPICall, void* pCallback, int cubCallback, int iCallbackExpected, bool *pbFailed)
 {
-	//return SteamUtils()->GetAPICallResult(hSteamAPICall, pCallback, cubCallback, iCallbackExpected, pbFailed);
+	return false;
 }
 
 extern "C" uint32_t c_LobbyMatchList_t_m_nLobbiesMatching(void *LobbyMatchList_t_instance)
 {
-	//return static_cast<LobbyMatchList_t*>(LobbyMatchList_t_instance)->m_nLobbiesMatching;
+	return (uint32_t)0;
 }
 
 extern "C" void c_SteamMatchmaking_AddRequestLobbyListStringFilter(const char *pchKeyToMatch, const char *pchValueToMatch, int eComparisonType)
 {
-	//SteamMatchmaking()->AddRequestLobbyListStringFilter(pchKeyToMatch, pchValueToMatch, static_cast<ELobbyComparison>(eComparisonType));
 }
 
 extern "C" void c_SteamMatchmaking_AddRequestLobbyListNumericalFilter(const char *pchKeyToMatch, int nValueToMatch, int eComparisonType)
 {
-	//SteamMatchmaking()->AddRequestLobbyListNumericalFilter(pchKeyToMatch, nValueToMatch, static_cast<ELobbyComparison>(eComparisonType));
 }
 
 extern "C" void c_SteamMatchmaking_AddRequestLobbyListNearValueFilter(const char *pchKeyToMatch, int nValueToBeCloseTo)
 {
-	//SteamMatchmaking()->AddRequestLobbyListNearValueFilter(pchKeyToMatch, nValueToBeCloseTo);
 }
 
 extern "C" void c_SteamMatchmaking_AddRequestLobbyListFilterSlotsAvailable(int nSlotsAvailable)
 {
-	//SteamMatchmaking()->AddRequestLobbyListFilterSlotsAvailable(nSlotsAvailable);
 }
 
 extern "C" bool c_SteamMatchmaking_SetLobbyData(void *steamIDLobby, const char *pchKey, const char *pchValue)
 {
-	//return SteamMatchmaking()->SetLobbyData(*static_cast<CSteamID*>(steamIDLobby), pchKey, pchValue);
+	return false;
 }
 
 extern "C" bool c_SteamMatchmaking_SetLobbyType(void *steamIDLobby, int eLobbyType)
 {
-	//return SteamMatchmaking()->SetLobbyType(*static_cast<CSteamID*>(steamIDLobby),static_cast<ELobbyType>(eLobbyType));
+	return false;
 }
 
 extern "C" bool c_SteamMatchmaking_DeleteLobbyData(void *steamIDLobby, const char *pchKey)
 {
-	//return SteamMatchmaking()->DeleteLobbyData(*static_cast<CSteamID*>(steamIDLobby), pchKey);
+	return false;
 }
 
 extern "C" int c_SteamMatchmaking_GetLobbyDataCount(void *steamIDLobby)
 {
-	//return SteamMatchmaking()->GetLobbyDataCount(*static_cast<CSteamID*>(steamIDLobby));
+	return 0;
 }
 
 extern "C" bool c_SteamMatchmaking_GetLobbyDataByIndex(void *steamIDLobby, int iLobbyData, char *pchKey, int cchKeyBufferSize, char *pchValue, int cchValueBufferSize)
 {
-	//return SteamMatchmaking()->GetLobbyDataByIndex(*static_cast<CSteamID*>(steamIDLobby), iLobbyData, pchKey, cchKeyBufferSize, pchValue, cchValueBufferSize);
+	return false;
 }
 
 extern "C" const char* c_SteamMatchmaking_GetLobbyData(void *steamIDLobby, const char *pchKey)
 {
-	//return SteamMatchmaking()->GetLobbyData( *static_cast<CSteamID*>(steamIDLobby), pchKey );
+	return "";
 }
 
 extern "C" bool c_SteamMatchmaking_SendLobbyChatMsg(void *steamIDLobby, const void *pvMsgBody, int cubMsgBody)
 {
-	//return SteamMatchmaking()->SendLobbyChatMsg(*static_cast<CSteamID*>(steamIDLobby), pvMsgBody, cubMsgBody);
+	return false;
 }
 
 extern "C" int c_SteamMatchmaking_GetLobbyChatEntry(void *steamIDLobby, int iChatID, void *pSteamIDUser, void *pvData, int cubData, int *peChatEntryType)
 {
-	//return SteamMatchmaking()->GetLobbyChatEntry(*static_cast<CSteamID*>(steamIDLobby), iChatID, static_cast<CSteamID*>(pSteamIDUser), pvData, cubData, reinterpret_cast<EChatEntryType*>(peChatEntryType));
+	return 0;
 }
 
 extern "C" bool c_SteamFriends_SetRichPresence(const char *pchKey, const char *pchValue)
 {
-	//return SteamFriends()->SetRichPresence(pchKey, pchValue);
+	return false;
 }
 
 extern "C" int c_SteamFriends_GetFriendCount(int iFriendFlags)
 {
-	//return SteamFriends()->GetFriendCount(iFriendFlags);
+	return 0;
 }
 
 extern "C" bool c_SteamMatchmaking_InviteUserToLobby(void *steamIDLobby, void *steamIDInvitee)
 {
-	//return SteamMatchmaking()->InviteUserToLobby(*static_cast<CSteamID*>(steamIDLobby), *static_cast<CSteamID*>(steamIDInvitee));
+	return false;
 }
 
 extern "C" void c_SteamFriends_ActivateGameOverlay(const char *pchDialog)
 {
-	//SteamFriends()->ActivateGameOverlay(pchDialog);
 }
 
 extern "C" void c_SteamMatchmaking_LeaveLobby(void *steamIDLobby)
 {
-	//SteamMatchmaking()->LeaveLobby(*static_cast<CSteamID*>(steamIDLobby));
 }
 
 extern "C" bool c_SteamFriends_GetFriendGamePlayed(void *steamIDFriend, void *pFriendGameInfo)
 {
-	//return SteamFriends()->GetFriendGamePlayed(*static_cast<CSteamID*>(steamIDFriend), static_cast<FriendGameInfo_t*>(pFriendGameInfo));
+	return false;
 }
 
 extern "C" void* c_FriendGameInfo_t_m_steamIDLobby(void *FriendGameInfo_t_instance)
 {
-	//CSteamID *id = new CSteamID;
-	//*id = static_cast<FriendGameInfo_t*>(FriendGameInfo_t_instance)->m_steamIDLobby;
-	//return id;
-	return NULL;
+	return nullptr;
 }
 
 extern "C" void* c_P2PSessionRequest_t_m_steamIDRemote(void *P2PSessionRequest_t_instance)
 {
-	//CSteamID *id = new CSteamID;
-	//*id = static_cast<P2PSessionRequest_t*>(P2PSessionRequest_t_instance)->m_steamIDRemote;
-	//return id;
-	return NULL;
+	return nullptr;
 }
 
 extern "C" int c_LobbyCreated_Result(void *pCallback)
 {
-	//return static_cast<c_EResult>(static_cast<LobbyCreated_t*>(pCallback)->m_eResult);
 	return 0;
 }
 
 extern "C" void* c_LobbyCreated_Lobby(void *pCallback)
 {
-	//CSteamID *id = new CSteamID;
-	//*id = static_cast<LobbyCreated_t*>(pCallback)->m_ulSteamIDLobby;
-	//return id;
-	return NULL;
+	return nullptr;
 }
 
 extern "C" void *c_GameJoinRequested_m_steamIDLobby(void *pCallback)
 {
-	//CSteamID *id = new CSteamID;
-	//*id = static_cast<GameLobbyJoinRequested_t*>(pCallback)->m_steamIDLobby;
-	//return id;
-	return NULL;
+	return nullptr;
 }
 
 //class SteamServerWrapper
@@ -607,15 +546,11 @@ extern "C" void *c_GameJoinRequested_m_steamIDLobby(void *pCallback)
 
 extern "C" int c_ValidateAuthTicketResponse_t_EAuthSessionResponse(void *ValidateAuthTicketResponse_t_instance)
 {
-	//return static_cast<c_EAuthSessionResponse>(static_cast<ValidateAuthTicketResponse_t*>(ValidateAuthTicketResponse_t_instance)->m_eAuthSessionResponse);
 	return 0;
 }
 
 extern "C" void* c_ValidateAuthTicketResponse_t_m_SteamID(void *ValidateAuthTicketResponse_t_instance)
 {
-	//CSteamID *id = new CSteamID;
-	//*id = static_cast<ValidateAuthTicketResponse_t*>(ValidateAuthTicketResponse_t_instance)->m_SteamID;
-	//return id;
 	return nullptr;
 }
 
@@ -764,30 +699,21 @@ extern "C" void* c_ValidateAuthTicketResponse_t_m_SteamID(void *ValidateAuthTick
 
 extern "C" int c_SteamMatchmaking_JoinLobby(void *steamIDLobby)
 {
-	//c_SteamAPICall_t steamAPICall = SteamMatchmaking()->JoinLobby(*(static_cast<CSteamID *>(steamIDLobby)));
-	//steam_server_client_wrapper->m_SteamCallResultLobbyEntered_Set(steamAPICall);
 	return 0;
 }
 
 extern "C" int c_SteamMatchmaking_RequestLobbyList()
 {
-	//SteamAPICall_t m_SteamCallResultLobbyMatchList = SteamMatchmaking()->RequestLobbyList();
-	//steam_server_client_wrapper->m_SteamCallResultLobbyMatchList_Set(m_SteamCallResultLobbyMatchList);
-	//return m_SteamCallResultLobbyMatchList;
 	return 0;
 }
 
 extern "C" int c_SteamMatchmaking_CreateLobby(int eLobbyType, int cMaxMembers)
 {
-	//c_SteamAPICall_t steamAPICall = SteamMatchmaking()->CreateLobby(static_cast<ELobbyType>(eLobbyType), cMaxMembers);
-	//steam_server_client_wrapper->m_SteamCallResultLobbyCreated_Set(steamAPICall);
-	//return steamAPICall;
 	return 0;
 }
 
 extern "C" void c_RetrieveSteamIDFromGameServer( uint32_t m_unServerIP, uint16_t m_usServerPort )
 {
-	//steam_server_client_wrapper->RetrieveSteamIDFromGameServer( m_unServerIP, m_usServerPort );
 }
 
 //void SteamServerClientWrapper::RetrieveSteamIDFromGameServer( uint32_t m_unServerIP, uint16_t m_usServerPort )
@@ -913,71 +839,51 @@ extern "C" void c_RetrieveSteamIDFromGameServer( uint32_t m_unServerIP, uint16_t
 
 extern "C" void c_SteamServerClientWrapper_Instantiate()
 {
-	//steam_server_client_wrapper = new SteamServerClientWrapper();
 }
 
 extern "C" void c_SteamServerClientWrapper_Destroy()
 {
-	//delete steam_server_client_wrapper;
-	//steam_server_client_wrapper = nullptr;
 }
 
 extern "C" uint64_t c_LobbyGameCreated_t_m_ulSteamIDGameServer(void *LobbyGameCreated_t_instance)
 {
-	//return static_cast<LobbyGameCreated_t*>(LobbyGameCreated_t_instance)->m_ulSteamIDGameServer;
+	return (uint64_t)0;
 }
 
 extern "C" void c_SteamFriends_ActivateGameOverlayInviteDialog(void *steamIDLobby)
 {
-	//SteamFriends()->ActivateGameOverlayInviteDialog(*static_cast<CSteamID*>(steamIDLobby));
 }
 
 extern "C" uint8_t c_GameOverlayActivated_t_m_bActive(void *GameOverlayActivated_t_instance)
 {
-	//return static_cast<GameOverlayActivated_t*>(GameOverlayActivated_t_instance)->m_bActive;
-	return 0;
+	return (uint8_t)0;
 }
 
 extern "C" uint32_t pCallback_m_nLobbiesMatching(void *pCallback)
 {
-	//return static_cast<LobbyMatchList_t*>(pCallback)->m_nLobbiesMatching;
-	return 0;
+	return (uint32_t)0;
 }
 
 extern "C" void c_SteamMatchmaking_JoinLobbyPCH(const char *pchLobbyID, void *onLobbyEnteredFunc)
 {
-	//CSteamID steamIDLobby( (uint64)atoll( pchLobbyID ) );
-	//if( steamIDLobby.IsValid() )
-	//{
-		//c_SteamAPICall_t steamAPICall = SteamMatchmaking()->JoinLobby(steamIDLobby);
-		//steam_server_client_wrapper->m_SteamCallResultLobbyEntered_Set(steamAPICall);
-	//}
 }
 
 extern "C" uint32_t c_pCallback_m_EChatRoomEnterResponse( void *pCallback )
 {
-	//return static_cast<LobbyEnter_t*>(pCallback)->m_EChatRoomEnterResponse;
-	return 0;
+	return (uint32_t)0;
 }
 
 extern "C" void *c_pCallback_m_ulSteamIDLobby( void *pCallback )
 {
-	//CSteamID *id = new CSteamID();
-	//*id = static_cast<LobbyEnter_t*>(pCallback)->m_ulSteamIDLobby;
-	//return id;
 	return nullptr;
 }
 
 extern "C" uint64_t c_CSteamID_ConvertToUint64( void *steamID )
 {
-	//return (static_cast<CSteamID*>(steamID))->ConvertToUint64();
-	return 0;
+	return (uint64_t)0;
 }
 
 extern "C" void *LobbyDataUpdated_pCallback_m_ulSteamIDLobby(void *pCallback)
 {
-	//CSteamID *id = new CSteamID();
-	//*id = static_cast<LobbyDataUpdate_t*>(pCallback)->m_ulSteamIDLobby;
-	//return id;
 	return nullptr;
 }
