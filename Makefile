@@ -1,6 +1,6 @@
 PREFIX ?=	/usr/local
 
-all: Steamworks.NET/bin/Steamworks.NET.dll native wrapper cestub hlsteam
+all: native wrapper cestub
 
 Steamworks.NET/bin/Steamworks.NET.dll:	Steamworks.NET/*.cs \
 				Steamworks.NET/*.csproj \

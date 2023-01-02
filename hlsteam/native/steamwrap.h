@@ -13,6 +13,19 @@ extern "C" {
 #include <iostream>
 #include <map>
 
+/*
+#include "../../goldberg_emulator/sdk_includes/steam_api.h"
+#include "../../goldberg_emulator/sdk_includes/steam_gameserver.h"
+#include "../../goldberg_emulator/sdk_includes/isteamappticket.h"
+*/
+
+struct My_CSteamID
+{
+	int unAccountID = 0;
+	int EAccountType = 1;   // 1: k_EAccountTypeIndividual, regular user account
+	int EUniverse = 0;      // 0: k_EUniverseInvalid
+	int unAccountInstance = 0;
+};
 
 typedef vbyte *		vuid;
 #define _UID		_BYTES
@@ -21,7 +34,7 @@ typedef vbyte *		vuid;
 void dyn_call_result( vclosure *c, vdynamic *p, bool error );
 void hl_set_uid( vdynamic *out, int64 uid );
 int hl_to_uid( vuid v );
-vuid hl_of_uid( int id );
+vuid hl_of_uid( My_CSteamID id );
 uint64 hl_to_uint64(vuid v);
 vuid hl_of_uint64(uint64 id);
 
@@ -102,7 +115,7 @@ public:
 	HLValue() {
 		value = (vdynamic*)hl_alloc_dynobj();
 	}
-	void Set( const char *name, int uid ) {
+	void Set( const char *name, My_CSteamID uid ) {
 		hl_dyn_setp(value, hl_hash_utf8(name), &hlt_uid, hl_of_uid(uid));
 	}
 	void Set( const char *name, uint64 uid ) {

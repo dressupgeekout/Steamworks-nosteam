@@ -14,14 +14,16 @@ uint64 hl_to_uint64(vuid v) {
 	return 0;
 }
 
-vuid hl_of_uid( int uid ) {
+vuid hl_of_uid( My_CSteamID uid ) {
 	printf("%s\n", __func__);
 	union {
 		vbyte b[8];
 		uint64 v;
 	} data;
-	//data.v = uid.ConvertToUint64();
-	return (vuid)0;
+	//data.v = (uint64)uid;
+	//return (vuid)0;
+	data.v = (uint64)0x2;
+	return (vuid)hl_copy_bytes(data.b, 8);
 }
 
 vuid hl_of_uint64(uint64 uid) {
@@ -82,7 +84,7 @@ HL_PRIM bool HL_NAME(init)( vclosure *onEvent, vclosure *onGlobalEvent ){
 	printf("%s\n", __func__);
 	/* change return value to 1 if wanting to try enable Steam functions like GameNetworkingSockets */
 	/* this needs to return 1 to allow running Evoland Legendary Edition */
-	return 0;
+	return 1;
 }
 
 HL_PRIM void HL_NAME(set_notification_position)( int pos ) {
@@ -94,7 +96,7 @@ HL_PRIM void HL_NAME(shutdown)(){
 }
 
 HL_PRIM void HL_NAME(run_callbacks)(){
-	printf("%s\n", __func__);
+	//printf("%s\n", __func__); // silenced because it's called too often
 }
 
 HL_PRIM bool HL_NAME(open_overlay)(vbyte *url){
@@ -113,7 +115,8 @@ DEFINE_PRIM(_BOOL, open_overlay, _BYTES);
 
 HL_PRIM vuid HL_NAME(get_steam_id)(){
 	printf("%s\n", __func__);
-	return (vuid)0;
+	My_CSteamID test;
+	return hl_of_uid(test);
 }
 
 HL_PRIM bool HL_NAME(restart_app_if_necessary)(int appId){
@@ -137,6 +140,26 @@ HL_PRIM bool HL_NAME(is_steam_in_big_picture_mode)(){
 }
 
 HL_PRIM bool HL_NAME(is_steam_running)(){
+	printf("%s\n", __func__);
+	return false;
+}
+
+HL_PRIM bool HL_NAME(delete_item)(){
+	printf("%s\n", __func__);
+	return false;
+}
+
+HL_PRIM bool HL_NAME(get_app_dependencies)(){
+	printf("%s\n", __func__);
+	return false;
+}
+
+HL_PRIM bool HL_NAME(is_subscribed_from_family_sharing)(){
+	printf("%s\n", __func__);
+	return false;
+}
+
+HL_PRIM bool HL_NAME(remove_app_dependency)(){
 	printf("%s\n", __func__);
 	return false;
 }
@@ -180,6 +203,10 @@ HL_PRIM void HL_NAME(cancel_call_result)( int *m_call ) {
 	printf("%s\n", __func__);
 }
 
+HL_PRIM void HL_NAME(add_app_dependency)() {
+	printf("%s\n", __func__);
+}
+
 DEFINE_PRIM(_UID, get_steam_id, _NO_ARG);
 DEFINE_PRIM(_BOOL, restart_app_if_necessary, _I32);
 DEFINE_PRIM(_BOOL, is_overlay_enabled, _NO_ARG);
@@ -191,3 +218,8 @@ DEFINE_PRIM(_BYTES, get_current_game_language, _NO_ARG);
 DEFINE_PRIM(_BYTES, get_auth_ticket, _REF(_I32) _REF(_I32));
 DEFINE_PRIM(_VOID, cancel_call_result, _CRESULT);
 DEFINE_PRIM(_BYTES, get_current_beta_name, _NO_ARG);
+DEFINE_PRIM(_BOOL, delete_item, _NO_ARG);
+DEFINE_PRIM(_BOOL, get_app_dependencies, _NO_ARG);
+DEFINE_PRIM(_BOOL, is_subscribed_from_family_sharing, _NO_ARG);
+DEFINE_PRIM(_BOOL, remove_app_dependency, _NO_ARG);
+DEFINE_PRIM(_VOID, add_app_dependency, _NO_ARG);
