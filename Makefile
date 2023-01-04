@@ -29,8 +29,6 @@ Steamworks.NET/bin/Steamworks.NET.dll:	Steamworks.NET/*.cs \
 
 install: all
 	install -d $(PREFIX)/lib/steamworks-nosteam/
-	install Steamworks.NET/bin/Steamworks.NET.dll \
-		$(PREFIX)/lib/steamworks-nosteam/
 	install native/libSteamworksNative.so.* \
 		$(PREFIX)/lib/steamworks-nosteam/
 	install wrapper/libsteamwrapper.so.* \
