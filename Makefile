@@ -37,8 +37,6 @@ install: all
 		$(PREFIX)/lib/steamworks-nosteam/
 	install cestub/libcestub.so.* \
 		$(PREFIX)/lib/steamworks-nosteam/
-	install hlsteam/steam.hdll \
-		$(PREFIX)/lib/steamworks-nosteam/
 
 .PHONY: clean uninstall native wrapper cestub hlsteam
 
