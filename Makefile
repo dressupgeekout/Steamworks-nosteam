@@ -25,7 +25,7 @@ Steamworks.NET/bin/Steamworks.NET.dll:	Steamworks.NET/*.cs \
 				Steamworks.NET/types/SteamUnifiedMessages/*.cs \
 				Steamworks.NET/types/SteamUserStats/*.cs \
 				Steamworks.NET/types/Steam_api_common/*.cs
-	@cd Steamworks.NET && xbuild Steamworks.NET.sln
+	cd Steamworks.NET && xbuild Steamworks.NET.sln
 
 install: all
 	install -d $(PREFIX)/lib/steamworks-nosteam/
@@ -51,11 +51,11 @@ hlsteam:
 	$(MAKE) -C hlsteam
 
 clean:
-	@rm -rf Steamworks.NET/{bin,obj}
-	@$(MAKE) -C native clean
-	@$(MAKE) -C wrapper clean
-	@$(MAKE) -C cestub clean
-	@$(MAKE) -C hlsteam clean
+	rm -rf Steamworks.NET/{bin,obj}
+	$(MAKE) -C native clean
+	$(MAKE) -C wrapper clean
+	$(MAKE) -C cestub clean
+	$(MAKE) -C hlsteam clean
 
 uninstall:
 	rm -f $(PREFIX)/lib/steamworks-nosteam/Steamworks.NET.dll
